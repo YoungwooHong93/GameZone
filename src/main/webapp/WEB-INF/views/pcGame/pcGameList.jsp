@@ -46,7 +46,7 @@
 		</c:if>
 		<c:if test="${empty list}">
 			<tr height="50">
-				<td colspan="2">** 출력할 자료가 없습니다 **</td>
+				<td colspan="2">해당하는 게임이 존재하지 않습니다.</td>
 			</tr>
 		</c:if>
 	</table>

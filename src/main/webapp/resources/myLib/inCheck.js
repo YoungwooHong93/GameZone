@@ -4,13 +4,9 @@
   ID : 길이(5이상 10이하), 영문자, 숫자로만 구성
   Password : 길이(8이상 15이하), 영문, 숫자, 특수문자로 구성, 특수문자는 반드시 1개 이상 포함할 것
   Name : 길이(2이상), 영문 또는 한글로만 입력
-  BirthDay : 입력 여부 확인  ( length == 10 )
+  BirthDay : 입력 여부 확인 ( length == 10 )
   Email : 직접입력이나 select 했는지
   Phone : '-' 없이 숫자 11자리 입력했는지
-
- < ** 작성 규칙 >
-   => JavaScript function으로 정의 하고 
-	  결과를 true or false로 return
  */
 
 function idCheck() {

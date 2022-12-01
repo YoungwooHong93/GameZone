@@ -289,7 +289,7 @@
 					return false;
 
 				} else {
-					alert('가입해주셔서 감사합니다 :)');
+					//alert('가입해주셔서 감사합니다 :)');
 					return true; // submit 진행
 				}
 
@@ -336,7 +336,6 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-   	
    	<main>
 		<form action="joinUser" method="post" id="myForm" enctype="multipart/form-data">
 			<div class="container rounded bg-white mt-5 mb-5">

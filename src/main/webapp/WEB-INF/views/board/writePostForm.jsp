@@ -29,7 +29,6 @@
 			$('#writePostForm').submit();
 			
 			if (confirm("게시글을 등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				alert('게시글을 등록하겠습니다.');
 	           	return true;
 	           	
 			} else {
@@ -74,7 +73,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-   	
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>
+	</c:if>
    	<main>
 		<form action="writePost" method="post" id="writePostForm">
 			<table>
@@ -99,15 +102,8 @@
 				</tr>
 			</table>
 		</form>
-	
-		<c:if test="${not empty message}">
-			<hr>
-			${message}<br>
-		</c:if>
-		<hr>
 		&nbsp;&nbsp;<a href="boardList">목록으로</a>
 	</main>
-	<!-- ==================================================== -->
     <!-- Footer section -->
     <footer class="footer-section">
     	<div class="container">

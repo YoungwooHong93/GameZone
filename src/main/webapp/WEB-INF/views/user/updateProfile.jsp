@@ -20,6 +20,9 @@
         let phCheck = false;
         
         let mail_auth_check = false; // 이메일 인증
+        
+        let email1 = "${one.email}";
+        let domain1 = "${one.domain}";
 
         $(function () {
         	$('#user_name').focus();
@@ -158,11 +161,18 @@
 
             if (nCheck == false) {
            		 $('#nMessage').html('Name을 확인하세요 !!');
-
             }
             
             if ($('#phone').val() == '${one.phone}') {
             	phCheck = true;
+            }
+            
+            if (phCheck == false) {
+            	$('#phMessage').html('핸드폰 번호를 확인하세요 !!');
+            }
+            
+            if (email1 == $('#email').val() && domain1 == $('#dw').val()) {
+            	mail_auth_check = true;
             }
 
             if ($('#email').val() == '${one.email}') {
@@ -185,10 +195,6 @@
            		$('#dMessage').html('도메인을 선택해주세요');
             }
 
-            if (phCheck == false) {
-            	$('#phMessage').html('핸드폰 번호를 확인하세요 !!');
-            }
-
             if ($('#domain').val() == 1) {
             	dCheck = true;
 
@@ -202,7 +208,6 @@
                     return false;
 
                 } else
-                	alert('수정하겠습니다.');
                 	return true;
 
 			} else {
@@ -248,6 +253,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<form action="updateProfile" method="post" enctype="multipart/form-data">
 			<div class="container rounded bg-white">
@@ -263,7 +273,7 @@
 	                                 var reader = new FileReader;
 	                                 reader.readAsDataURL(this.files[0]);
 	                                 reader.onload = function (e) {
-	                                    $(".select_img").attr("src", e.target.result).width(100).height(100);
+	                                    $(".select_img").attr("src", e.target.result);
 	                                 } // onload_function
 	                              } // if
 	                           }); // change
@@ -277,46 +287,57 @@
 							<div class="d-flex justify-content-between align-items-center mb-3">
 								<h4 class="text-right text-white">Profile Settings</h4>
 	                        </div>
-	                        <div class="row mt-3">
-	                           <div class="col-md-12">
-	                              <label class="labels">Name</label>
-	                              <input type="text" class="form-control controlBox" name="user_name" id="user_name" value="${one.user_name}">
-	                              <b><span id="nMessage" class="eMessage"></span></b>
-	                           </div>
+							<div class="row mt-3">
+								<div class="col-md-12">
+									<label class="labels">Name</label>
+									<input type="text" class="form-control controlBox" name="user_name" id="user_name" value="${one.user_name}">
+									<b><span id="nMessage" class="eMessage"></span></b>
+								</div>
 
-	                           <!-- gender  -->
-	                           <div class="gcol-md-12">
-	                              <label class="labels">Gender</label><br>
-	                              <div class="radio_m">
-	                                 <span class="gradio_w">여</span> 
-	                                 <input class="gradio" type="radio" name="gender" value="1" <c:if test="${one.gender == 1}">checked</c:if>>
-	                                 <span class="gradio_m">남</span> 
-	                                 <input class="gradio" type="radio" name="gender" value="2" <c:if test="${one.gender == 2}">checked</c:if>><br>
-	                              </div>
-	                           </div>
-	                           <!-- gender -->
-                           
-	                           <div class="col-md-12">
-	                              <label class="labels">Phone</label><input type="text" class="form-control controlBox" name="phone"
-	                                 id="phone" value="${one.phone}"><br> <b><span id="phMessage"
-	                                    class="eMessage"></span></b>
-	                           </div>
-
-	                           <div class="ecol-md-12">
-	                              <label class="labels">Email</label><br> 
-	                              <input type="text" class="eform-control controlBox" id="email" name="email" value="${one.email}">
-	                              <input name="dw" class="dform-control controlBox" id="dw" type="text" value="${one.domain}">
-	                              <select class="email-select" name="domain" id="domain">
-	                                 <option value="1">직접 입력</option>
-	                                 <option value="@naver.com">@naver.com</option>
-	                                 <option value="@google.com">@gmail.com</option>
-	                                 <option value="@daum.net">@hanmail.net</option>
-	                                 <option value="@nate.com">@nate.com</option>
-	                                 <option value="@kakao.com">@kakao.com</option>
-	                              </select> <br> <b><span id="emMessage" class="eMessage"></span></b>
-	                           </div>
-                           
-	                           <div class="email-check">
+								<!-- gender  -->
+								<div class="gcol-md-12">
+									<label class="labels">Gender</label><br>
+									<div class="radio_m">
+										<span class="gradio_w">여</span> 
+										<input class="gradio" type="radio" name="gender" value="1" <c:if test="${one.gender == 1}">checked</c:if>>
+										<span class="gradio_m">남</span> 
+										<input class="gradio" type="radio" name="gender" value="2" <c:if test="${one.gender == 2}">checked</c:if>><br>
+									</div>
+								</div>
+								<!-- gender -->
+	                           
+	                           	<!-- birthday -->
+								<div class="col-md-12" hidden>
+									<label class="labels">BirthDay</label>
+									<input type="text" class="detail-form controlBox" name="birthday" id="birthday" value="${one.birthday}">
+								</div>
+								<!-- birthday end -->
+								
+								<!-- phone -->
+								<div class="col-md-12">
+	                              <label class="labels">Phone</label>
+	                              <input type="text" class="form-control controlBox" name="phone" id="phone" value="${one.phone}"><br> 
+	                              <b><span id="phMessage" class="eMessage"></span></b>
+								</div>
+								<!-- phone end -->
+								
+								<!-- email -->
+								<div class="ecol-md-12">
+									<label class="labels">Email</label><br> 
+									<input type="text" class="eform-control controlBox" id="email" name="email" value="${one.email}">
+									<input name="dw" class="dform-control controlBox" id="dw" type="text" value="${one.domain}">
+									<select class="email-select" name="domain" id="domain">
+									<option value="1">직접 입력</option>
+									<option value="@naver.com">@naver.com</option>
+									<option value="@google.com">@gmail.com</option>
+									<option value="@daum.net">@hanmail.net</option>
+									<option value="@nate.com">@nate.com</option>
+									<option value="@kakao.com">@kakao.com</option>
+									</select><br> 
+									<b><span id="emMessage" class="eMessage"></span></b>
+								</div>
+								
+								<div class="email-check">
 									<input type="button" id="emailCheck" value="이메일 인증하기">
 									<div id="enter_auth_number">
 										<input class="mail-check-input" id="check_number" placeholder="인증번호 6자리" maxlength="6">
@@ -324,6 +345,7 @@
 									</div>
 									<b><span id="ecMessage" class="eMessage"></span></b>
 							   </div>
+							   <!-- email end -->
 							</div>
 						</div>
 						<div class="button">

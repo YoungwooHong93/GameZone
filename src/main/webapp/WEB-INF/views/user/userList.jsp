@@ -103,15 +103,11 @@
 							<a href="detailUser?id=${user.id}">${user.id}</a>
 						</c:if>
 						
-						<%-- <c:if test="${loginID != 'admin'}">
-							${user.id}
-						</c:if> --%>
-						
 						</td>
 						<td>${user.user_name}</td>
 						<td>${user.birthday}</td>
 						<td>${user.gender}</td>
-						<td>${user.email}</td>
+						<td>${user.email}${user.domain}</td>
 						<td>${user.phone}</td>
 					</tr>
 				</c:forEach>
@@ -123,12 +119,12 @@
 			<!-- First, Prev -->
 			<c:choose>
 				<c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
-					<a href="userList${pageMaker.searchQuery(1)}">FIRST</a>&nbsp;
-					<a href="userList${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
+					<a href="userList${pageMaker.searchQuery(1)}"><img src="resources/img/first.png"></a>&nbsp;
+					<a href="userList${pageMaker.searchQuery(pageMaker.spageNo-1)}"><img src="resources/img/left.png"></a>&nbsp;&nbsp;
 				</c:when>
 				
 				<c:otherwise>
-					<font color="DimGray">FIRST&nbsp;&lt;&nbsp;&nbsp;</font>
+					<font color="DimGray"><img src="resources/img/first.png">&nbsp;<img src="resources/img/left.png">&nbsp;&nbsp;</font>
 				</c:otherwise>
 			</c:choose>
 		
@@ -148,12 +144,12 @@
 			<!-- Next, Last -->
 			<c:choose>
 				<c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
-					<a href="userList${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
-					<a href="userList${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;LAST</a>
+					<a href="userList${pageMaker.searchQuery(pageMaker.epageNo+1)}"><img src="resources/img/right.png"></a>
+					<a href="userList${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;&nbsp;<img src="resources/img/last.png"></a>
 				</c:when>
 				
 				<c:otherwise>
-					<font color="DimGray">&nbsp;&gt;&nbsp;&nbsp;LAST</font>
+					<font color="DimGray">&nbsp;<img src="resources/img/right.png">&nbsp;&nbsp;<img src="resources/img/last.png"></font>
 				</c:otherwise>
 			</c:choose>
 		

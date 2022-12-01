@@ -59,11 +59,12 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-   	
    	<main>
 		<h3>${param.game_name}</h3>
 		<c:if test="${not empty message}">
-			${message}<br>
+			<script>
+				alert(`${message}`);
+			</script>
 		</c:if>
 		<hr>
 		<form action="updateFlashGame" method="post" enctype="multipart/form-data">

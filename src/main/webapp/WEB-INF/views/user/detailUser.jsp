@@ -15,8 +15,8 @@
 	<script>
 		function deleteUser() {
 			if (confirm("탈퇴하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				alert('탈퇴되었습니다. 이용해주셔서 감사합니다 :)');
                	return true; // 탈퇴
+               	
 			} else {
                	alert('탈퇴가 취소되었습니다.');
 				return false;
@@ -60,8 +60,9 @@
    	</header>
    	<!-- Header section end -->
 	<c:if test="${not empty message}">
-		${message}<br>
-		<hr>
+		<script>
+			alert(`${message}`);
+		</script>
 	</c:if>
 	<main class="detail_main">
 		<div class="container rounded bg-white">

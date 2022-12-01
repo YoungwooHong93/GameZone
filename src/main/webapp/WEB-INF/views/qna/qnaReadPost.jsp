@@ -14,9 +14,8 @@
 	<script>
 		function removeQnA() {
 			if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				
-				alert('문의글 삭제하겠습니다.');
 	           	return true; // 삭제
+	           	
 			} else {
 	           	alert('삭제가 취소되었습니다.');
 				return false;
@@ -59,7 +58,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-   	
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<hr>
 		<h2>${one.title}</h2>

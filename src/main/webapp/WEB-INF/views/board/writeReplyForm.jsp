@@ -12,6 +12,20 @@
 	<link rel="stylesheet" href="resources/css/animate.css" />
 	<link rel="shortcut icon" href="resources/img/icon2.ico" />
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
+	<script>
+		function writeReply() {
+			if (confirm("댓글을 등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
+	           	return true;
+	           	
+			} else {
+	           	alert('등록이 취소되었습니다.');
+				return false;
+			}
+			
+			return true;
+			
+		} // writeReply
+	</script>
 </head>
 <body>
 	<!-- Header section -->
@@ -48,7 +62,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-	
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
 	<main>
 		<form action="writeReply" method="post">
 			<table>
@@ -75,7 +93,7 @@
 				<tr>
 					<td></td>
 					<td>
-						<input type="submit" value="등록">&nbsp;&nbsp; 
+						<input type="submit" value="등록" onclick="return writeReply()">&nbsp;&nbsp; 
 						<a href="javascript:history.go(-1)"><input type="button" value="취소"></a>
 					</td>
 				</tr>
@@ -111,7 +129,6 @@
        	</div>
     </footer>
     <!-- Footer section end -->
-
 	<!--====== Javascripts & Jquery ======-->
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>

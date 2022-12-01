@@ -138,7 +138,7 @@ public class FlashGameController {
 		String realPath = request.getRealPath("/"); // deprecated Method
 
 		if (realPath.contains(".eclipse."))
-			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\flashGameImg\\";
+			realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\flashGameImg\\";
 
 		else
 			realPath += "resources\\flashGameImg\\";
@@ -193,7 +193,7 @@ public class FlashGameController {
 		String realPath = request.getRealPath("/"); // deprecated Method
 
 		if (realPath.contains(".eclipse."))
-			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\flashGameImg\\";
+			realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\flashGameImg\\";
 
 		else
 			realPath += "resources\\flashGameImg\\";

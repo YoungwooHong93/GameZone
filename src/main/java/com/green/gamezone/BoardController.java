@@ -114,7 +114,7 @@ public class BoardController {
 			rttr.addFlashAttribute("message", "새 게시물이 등록되었습니다.");
 
 		} else {
-			mv.addObject("message", "새 게시물 등록 실패. 다시 시도해주세요");
+			mv.addObject("message", "게시물 등록 실패. 다시 시도해주세요");
 			uri = "/board/writePostForm";
 		}
 

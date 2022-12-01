@@ -37,14 +37,14 @@
 	
 	<select id="userList" resultType="vo.UserVO">
 		select * from user 
-		where (id != "admin" <include refid="search"></include>
+		where (id != "zzz" <include refid="search"></include>
 		order by id asc
 		limit #{sno}, #{rowsPerPage}
 	</select>
 	
 	<select id="viewCount" resultType="int">
 		select count(*) from user
-		where (id != "admin" <include refid="search"></include>
+		where (id != "zzz" <include refid="search"></include>
 	</select>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -54,7 +54,6 @@
 		where id = #{id}
 	</select>
 	
-	<!-- ** insert, update, delete는 return type이 int로 정해져있기 때문에 resultType 없어도 됨 -->
 	<insert id="joinUser">
 		insert into user values (#{user_number}, #{uploadimg}, #{id}, #{password}, #{user_name}, #{birthday}, #{gender}, #{email}, #{domain}, #{phone})
 	</insert>
@@ -70,11 +69,6 @@
 		where id = #{id}
 	</update>
 	
-	<!-- <update id="updateMailKey" parameterType="UserVO">
-		update user set mail_key = #{mail_key} 
-		where email = #{email} and id = #{id}
-	</update> -->
-
 	<delete id="deleteUser">
 		delete from user 
 		where id = #{id}

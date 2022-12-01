@@ -13,6 +13,17 @@
    <link rel="shortcut icon" href="resources/img/icon2.ico"/>
    <script src="resources/js/jquery-3.2.1.min.js"></script>
    <script src="resources/myLib/axReadPost.js"></script>
+   <script>
+	   function removePost() {
+			
+			if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
+	          	return true; // 삭제
+			} else {
+	          	alert('삭제가 취소되었습니다.');
+				return false;
+			}
+		} // removePost(삭제)
+   </script>
 </head>
 <body>
 	<!-- Header section -->
@@ -49,7 +60,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-   	
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<hr>
 	   	<h2>${one.title}</h2>
@@ -91,7 +106,7 @@
 		<c:if test="${loginID == one.id || loginID == 'admin'}">
 	   		&nbsp;&nbsp;&nbsp;<a href="readPost?jCode=U&seq=${one.seq}">[게시글 수정]</a>
 	                           <!-- root 추가 : 삭제 시 원글 삭제 or 댓글 삭제 확인을 위함 -->
-	   		&nbsp;&nbsp;&nbsp;<a href="removePost?seq=${one.seq}&root=${one.root}">[게시글 삭제]</a>
+	   		&nbsp;&nbsp;&nbsp;<a href="removePost?seq=${one.seq}&root=${one.root}" onclick="return removePost()">[게시글 삭제]</a>
 		</c:if>
 	
 		<c:if test="${not empty loginID}"> <!-- 로그인ID가 비어있지 않다면 = 로그인을 했다면 -->

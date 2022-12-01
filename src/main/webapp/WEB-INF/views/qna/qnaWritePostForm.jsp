@@ -36,7 +36,6 @@
 			$('#qnaForm').submit(); // return true;
 	
 			if (confirm("등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				alert('문의글 등록하겠습니다.');
 	           	return true; // 삭제
 	           	
 			} else {
@@ -81,7 +80,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-   	
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<form action="qnaWritePost" method="post" id="qnaForm">
 			<table>
@@ -113,11 +116,6 @@
 				</tr>
 			</table>
 		</form>
-		<c:if test="${not empty message}">
-		<hr>
-			${message}<br>
-		</c:if>
-		<hr>
 	   	&nbsp;&nbsp;<a href="qnaBoardList">목록으로</a>
    	</main>
    	<!-- ==================================================== -->

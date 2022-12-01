@@ -27,7 +27,6 @@
          	<a class="site-logo" href="home">
          		<img src="resources/img/logo22.png" alt="gamelogo">
          	</a>
-         	
          	<!-- site menu -->
          	<nav class="main-menu">
             	<ul>
@@ -55,7 +54,6 @@
       	</div>
 	</header>
    	<!-- Header section End -->
-
 	<!-- Hero section -->
    	<section class="hero-section">
     	<div class="hero-slider owl-carousel">
@@ -105,7 +103,6 @@
       	</div>
 	</section>
    	<!-- Hero section end -->
-
    	<!-- Latest news section -->
    	<div class="latest-news-section">
     	<div class="ln-title">게임 소개</div>
@@ -124,7 +121,6 @@
       	</div>
    	</div>
    	<!-- Latest news section end -->
-
    	<!-- Feature section -->
    	<section class="feature-section spad">
     	<div class="section-title">
@@ -220,7 +216,6 @@
       	</div>
 	</section>
    	<!-- Feature section end -->
-
    	<!-- Recent game section  -->
    	<section class="recent-game-section spad set-bg" data-setbg="resources/img/recent-game-bg.png">
     	<div class="container">
@@ -293,7 +288,6 @@
       	</div>
    	</section>
    	<!-- Recent game section end -->
-
    	<!-- Review section -->
    	<section class="review-section spad set-bg" data-setbg="resources/img/review-bg.png">
     	<div class="container text-white">
@@ -350,7 +344,6 @@
       	</div>
    	</section>
    	<!-- Review section end -->
-
     <!-- Footer section -->
     <footer class="footer-section">
     	<div class="container">
@@ -371,7 +364,6 @@
        	</div>
     </footer>
     <!-- Footer section end -->
-
    	<!--====== Javascripts & Jquery ======-->
    	<script src="resources/js/jquery-3.2.1.min.js"></script>
    	<script src="resources/js/owl.carousel.min.js"></script>

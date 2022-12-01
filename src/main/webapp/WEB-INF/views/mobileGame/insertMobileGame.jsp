@@ -15,7 +15,6 @@
 		function insertGame() {
 
 			if (confirm("게임을 등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				alert('게임을 등록하겠습니다.');
 				return true;
 				
 			} else {
@@ -60,7 +59,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-   	
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<form action="insertMobileGame" method="post" enctype="multipart/form-data">
 			<table>

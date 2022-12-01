@@ -70,8 +70,12 @@
 		</div>
 	</header>
    	<!-- Header section end -->
-	
 	<!-- Recent game section  -->
+	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>
+	</c:if>
 	<main>
 		<div class="board_top">
 			<a href="https://lineagem.plaync.com/preorder/record/oasis2you/index?LM=19208101" target="_blank">
@@ -114,10 +118,6 @@
 					<th width=25%>작성일자</th>
 					<th width=10%>조회수</th>
 				</tr>
-
-				<!-- ======================================================= -->
-
-				<!-- jstl -->
 				<c:if test="${not empty list}">
 					<c:forEach var="board" items="${list}">
 						<tr id="boardtd">
@@ -201,8 +201,6 @@
 			</div>
 		</div>
 	</main>
-	<!-- ==================================================== -->
-	
     <!-- Footer section -->
     <footer class="footer-section">
     	<div class="container">

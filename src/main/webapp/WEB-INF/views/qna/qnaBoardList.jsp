@@ -47,6 +47,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
 	<!-- Recent game section  -->
 	<section>
 		<div class="board_top">
@@ -82,10 +87,6 @@
 				<th width=25%>작성일자</th>
 				<!-- <th width=10%>조회수</th> -->
 			</tr>
-
-			<!-- ======================================================= -->
-
-			<!-- jstl -->
 			<c:if test="${not empty list}">
 				<c:forEach var="qna" items="${list}">
 					<tr id="boardtd">
@@ -195,7 +196,6 @@
 			</div>
 		</div>
 	</section>
-	<!-- ==================================================== -->
     <!-- Footer section -->
     <footer class="footer-section">
     	<div class="container">

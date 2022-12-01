@@ -70,7 +70,7 @@
       	</div>
       	<div id="resultArea" class="GameList">
       		<div>
-				<div> 클릭 시 와플래시 게임 아카이브 페이지로 이동합니다.</div>
+				<div class="flashLink"> 클릭 시 와플래시 게임 아카이브 페이지로 이동합니다.</div>
 			</div>
 	    	<div class="searchresult">
 	        	<div> 검색결과 : ${gamePageMaker.totalRowsCount} 건</div>
@@ -108,7 +108,7 @@
              	
              	<c:if test="${empty list}">
                 	<tr height="50">
-                   		<td colspan="2">** 출력할 자료가 없습니다 **</td>
+                   		<td colspan="2">해당하는 게임이 존재하지 않습니다.</td>
                 	</tr>
              	</c:if>
 			</table>
@@ -119,7 +119,6 @@
 				<div id="Criteria_left">
 	            	<c:choose>
 	                	<c:when test="${gamePageMaker.prev && gamePageMaker.spageNo > 1}">
-	                  		<!-- ** New Version02_searchQuery 사용 ** -->
 	                   		<a href="flashGameList${gamePageMaker.searchQuery(1)}" class="aclick"><img src="resources/img/first.png"></a>&nbsp;
 	                   		<a href="flashGameList${gamePageMaker.searchQuery(gamePageMaker.spageNo-1)}" class="aclick"><img src="resources/img/left.png"></a>&nbsp;&nbsp;
 	                	</c:when>
@@ -136,7 +135,6 @@
 	                	</c:if>
 	
 	                	<c:if test="${i != gamePageMaker.gameCriteria.currPage}">
-	                  		<!-- ** New Version02_searchQuery 사용 ** -->
 	                   		<a href="flashGameList${gamePageMaker.searchQuery(i)}" class="aclick">${i}</a>&nbsp;
 	                	</c:if>
 	             	</c:forEach>
@@ -144,7 +142,6 @@
 	            	<!-- Next, Last -->
 	             	<c:choose>
 	                	<c:when test="${gamePageMaker.next && gamePageMaker.epageNo > 0}">
-	                   		<!-- ** New Version02_searchQuery 사용 ** -->
 	                   		<a href="flashGameList${gamePageMaker.searchQuery(gamePageMaker.epageNo+1)}" class="aclick"><img src="resources/img/right.png"></a>
 	                   		<a href="flashGameList${gamePageMaker.searchQuery(gamePageMaker.lastPageNo)}" class="aclick">&nbsp;&nbsp;<img src="resources/img/last.png"></a>
 	                	</c:when>
@@ -182,6 +179,5 @@
     <script src="resources/js/owl.carousel.min.js"></script>
     <script src="resources/js/jquery.marquee.min.js"></script>
     <script src="resources/js/main.js"></script>
-
 </body>
 </html>

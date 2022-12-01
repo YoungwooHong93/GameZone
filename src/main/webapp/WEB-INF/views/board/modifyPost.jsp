@@ -29,8 +29,6 @@
 	  	  	return true;
 			
 			if (confirm("수정하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				
-				alert('게시글을 수정하겠습니다.');
 	           	return true;
 	           	
 			} else {
@@ -42,8 +40,6 @@
 		function removePost() {
 			
 			if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				
-				alert('게시글을 삭제하겠습니다.');
 	           	return true; // 삭제
 			} else {
 	           	alert('삭제가 취소되었습니다.');
@@ -87,6 +83,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<form action="modifyPost" method="post">
 			<table>
@@ -124,8 +125,6 @@
 				</tr>
 			</table>
 		</form>
-		
-		<!-- jstl -->
 		<c:if test="${not empty message}">
 			<hr><${message}<br>
 		</c:if>
@@ -156,7 +155,6 @@
        	</div>
     </footer>
     <!-- Footer section end -->
-
 	<!--====== Javascripts & Jquery ======-->
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>

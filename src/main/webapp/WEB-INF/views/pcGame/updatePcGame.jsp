@@ -14,7 +14,6 @@
 	<script>
 		function updateGame() {
 			if (confirm("수정하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				alert(`${one.game_name}을(를) 수정하겠습니다.`);
 	           	return true;
 	           	
 			} else {
@@ -59,12 +58,13 @@
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<h3>${param.game_name}</h3>
-		<c:if test="${not empty message}">
-			${message}<br>
-		</c:if>
-		<hr>
 		<form action="updatePcGame" id="update_game_form" method="post" enctype="multipart/form-data">
 			<table id="update_game">
 				<thead>
@@ -150,7 +150,6 @@
 			</table>
 		</form>
 	</main>
-	
 	<!-- Footer section -->
     <footer class="footer-section">
     	<div class="container">

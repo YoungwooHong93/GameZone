@@ -118,8 +118,7 @@ public class UserController {
 			}
 
 		} else {
-			mv.addObject("message",
-					request.getParameter("id") + "님의 정보가 존재하지 않습니다 **");
+			mv.addObject("message", request.getParameter("id") + "님의 정보가 존재하지 않습니다.");
 		}
 
 		mv.setViewName(uri);
@@ -226,10 +225,9 @@ public class UserController {
 		vo.setDomain(domain);
 
 		String realPath = request.getRealPath("/"); // deprecated Method
-		System.out.println("** realPath = " + realPath);
 
 		if (realPath.contains(".eclipse."))
-			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\user_uploadImg\\";
+			realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\user_uploadImg\\";
 
 		else
 			realPath += "resources\\user_uploadImg\\";
@@ -260,10 +258,10 @@ public class UserController {
 
 		// 2. Service
 		if (service.joinUser(vo) > 0) {
-			mv.addObject("message", "회원가입 되었습니다. 로그인 후 이용해주세요.");
+			mv.addObject("message", "가입해주셔서 감사합니다. 로그인 후 이용해주세요.");
 
 		} else {
-			mv.addObject("message", "회원가입 실패. 다시 가입 부탁드립니다.");
+			mv.addObject("message", "회원가입 실패. 다시 가입 시도 부탁드립니다.");
 			uri = "/user/joinUser";
 		}
 
@@ -275,132 +273,131 @@ public class UserController {
 
 // -----------------------------------------------------------------------------------------------------------------------
 
-	// ** Update : 내 정보 수정하기
-	@RequestMapping(value = "/updateProfile")
-	public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, UserVO vo) throws IOException {
+	   // ** Update : 내 정보 수정하기
+	   @RequestMapping(value = "/updateProfile")
+	   public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, UserVO vo, RedirectAttributes rttr) throws IOException {
 
-		// 1. 요청
-		String uri = "redirect:detailUser?id=" + vo.getId();
+	      // 1. 요청
+	      String uri = "/user/detailUser";
+	      
+	      mv.addObject("one", vo);
 
-		mv.addObject("one", vo);
+	      // ** Email
+	      String domain = vo.getDomain();
 
-		// ** Email
-		String domain = vo.getDomain();
+	      if ("1".equals(request.getParameter("domain"))) {
+	         domain = request.getParameter("dw");
 
-		if ("1".equals(request.getParameter("domain"))) {
-			domain = request.getParameter("dw");
+	      } else {
+	         domain = request.getParameter("domain");
+	      }
 
-		} else {
-			domain = request.getParameter("domain");
-		}
+	      vo.setDomain(domain);
 
-		vo.setDomain(domain);
+	      // ** Image Update 추가
+	      // 1) Image 물리적 위치에 저장
+	      String realPath = request.getRealPath("/");
 
-		// ** Image Update 추가
-		// 1) Image 물리적 위치에 저장
-		String realPath = request.getRealPath("/");
+	      // 1-1) 위의 값을 이용해서 실제 저장위치 확인
+	      if (realPath.contains(".eclipse."))
+	         realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\user_uploadImg\\";
 
-		// 1-1) 위의 값을 이용해서 실제 저장위치 확인
-		if (realPath.contains(".eclipse."))
-			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\user_uploadImg\\";
+	      else
+	         realPath += "resources\\user_uploadImg\\";
 
-		else
-			realPath += "resources\\user_uploadImg\\";
+	      // 1-2) 폴더 만들기 (File 클래스활용)
+	      File f1 = new File(realPath);
+	      if (!f1.exists())
+	         f1.mkdir();
 
-		// 1-2) 폴더 만들기 (File 클래스활용)
-		File f1 = new File(realPath);
-		if (!f1.exists())
-			f1.mkdir();
+	      // 2) 기본 이미지 지정하기
+	      String file1, file2 = "resources/user_uploadImg/basicimg.png";
 
-		// 2) 기본 이미지 지정하기
-		String file1, file2 = "resources/user_uploadImg/basicimg.png";
+	      // 3) MultipartFile : file은 저장, 저장된 경로는 vo에 set
+	      MultipartFile uploadimgfile = vo.getUploadimgfile();
+	      if (uploadimgfile != null && !uploadimgfile.isEmpty()) {
 
-		// 3) MultipartFile : file은 저장, 저장된 경로는 vo에 set
-		MultipartFile uploadimgfile = vo.getUploadimgfile();
-		if (uploadimgfile != null && !uploadimgfile.isEmpty()) {
+	         // ** 새 Image 파일을 선택 함 -> Image 저장 (경로_realPath + 파일명)
+	         // 3-1) 물리적 저장경로에 Image 저장
+	         file1 = realPath + uploadimgfile.getOriginalFilename();
+	         uploadimgfile.transferTo(new File(file1));
 
-			// ** 새 Image 파일을 선택 함 -> Image 저장 (경로_realPath + 파일명)
-			// 3-1) 물리적 저장경로에 Image 저장
-			file1 = realPath + uploadimgfile.getOriginalFilename();
-			uploadimgfile.transferTo(new File(file1));
+	         // 3-2) Table 저장 준비
+	         file2 = "resources/user_uploadImg/" + uploadimgfile.getOriginalFilename();
+	         vo.setUploadimg(file2);
+	      }
+	      
+	      // 2. Service
+	      if (service.updateProfile(vo) > 0) {
+	         mv.addObject("one", vo); // 수정된 vo를 보관
+	         mv.addObject("message", "정보 수정이 완료되었습니다.");
 
-			// 3-2) Table 저장 준비
-			file2 = "resources/user_uploadImg/" + uploadimgfile.getOriginalFilename();
-			vo.setUploadimg(file2);
-		}
+	      } else {
+	         mv.addObject("message", "정보 수정 실패. 다시 수정 부탁드립니다.");
+	         uri = "/user/updateProfile";
+	      }
 
-		// 2. Service
-		if (service.updateProfile(vo) > 0) {
-			mv.addObject("message", "정보 수정이 완료되었습니다.");
-			mv.addObject("one", vo); // 수정된 vo를 보관
+	      // 3. 결과(ModelAndView)
+	      mv.setViewName(uri);
+	      return mv;
+	   } // updateProfile
 
-		} else {
-			mv.addObject("message", "정보 수정 실패. 다시 수정 부탁드립니다.");
-			uri = "/user/updateProfile";
-		}
+	// -----------------------------------------------------------------------------------------------------------------------
 
-		// 3. 결과(ModelAndView)
-		mv.setViewName(uri);
-		return mv;
+	   // ** Password Update : 비밀번호 수정하기
+	   @RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
+	   public ModelAndView updatePassword(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, UserVO vo, RedirectAttributes rttr) {
 
-	} // updateProfile
+	      // 1. 요청
+	      String oldPW = (String) request.getParameter("oldPassword");
 
-// -----------------------------------------------------------------------------------------------------------------------
+	      UserVO vo2 = new UserVO();
 
-	// ** Password Update : 비밀번호 수정하기
-	@RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
-	public ModelAndView updatePassword(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, UserVO vo) {
+	      String id = (String) request.getSession().getAttribute("loginID");
+	      String uri = "redirect:detailUser";
 
-		// 1. 요청
-		String oldPW = (String) request.getParameter("oldPassword");
+	      vo2.setId(id);
+	      vo2 = service.detailUser(vo2);
 
-		UserVO vo2 = new UserVO();
+	      HttpSession session = request.getSession(false);
 
-		String id = (String) request.getSession().getAttribute("loginID");
-		String uri = "redirect:detailUser";
+	      // 있는 ID인 지 확인
+	      if (session != null && session.getAttribute("loginID") != null) {
+	         vo.setId((String) session.getAttribute("loginID"));
 
-		vo2.setId(id);
-		vo2 = service.detailUser(vo2);
+	      } else {
+	         request.setAttribute("message", "해당 ID가 없습니다, 로그인 후 이용 부탁드립니다.");
+	         mv.setViewName("home");
 
-		HttpSession session = request.getSession(false);
+	         return mv;
+	      }
 
-		// 있는 ID인 지 확인
-		if (session != null && session.getAttribute("loginID") != null) {
-			vo.setId((String) session.getAttribute("loginID"));
+	      // 2. Service
+	      // ** passwordEncoder.matches 사용 시
+	      // => 암호화 된 password를 무조건 두 번째에 써야 됨.
+	      if (passwordEncoder.matches(oldPW, vo2.getPassword())) { // 암호화 전 PW와 암호화 후 PW 비교
 
-		} else {
-			request.setAttribute("message", "해당 ID가 없습니다, 로그인 후 이용 부탁드립니다.");
-			mv.setViewName("home");
+	         // 맞으면 암호화 다시 함
+	         vo.setPassword(passwordEncoder.encode(vo.getPassword()));
 
-			return mv;
-		}
+	         if (service.updatePassword(vo) > 0) {
+	            rttr.addFlashAttribute("message", "비밀번호가 변경되었습니다.");
 
-		// 2. Service
-		// ** passwordEncoder.matches 사용 시
-		// => 암호화 된 password를 무조건 두 번째에 써야 됨.
-		if (passwordEncoder.matches(oldPW, vo2.getPassword())) { // 암호화 전 PW와 암호화 후 PW 비교
+	         } else {
+	            mv.addObject("message", "비밀번호 변경 실패, 다시 변경 부탁드립니다.");
+	            uri = "/user/updatePassword";
+	         }
 
-			// 맞으면 암호화 다시 함
-			vo.setPassword(passwordEncoder.encode(vo.getPassword()));
+	      } else {
+	         mv.addObject("message", "현재 비밀번호가 다릅니다. 다시 시도 부탁드립니다.");
+	         uri = "/user/updatePassword";
+	      }
 
-			if (service.updatePassword(vo) > 0) {
-				mv.addObject("message", "비밀번호가 변경되었습니다.");
+	      // 3. 결과(ModelAndView)
+	      mv.setViewName(uri);
+	      return mv;
 
-			} else {
-				mv.addObject("message", "비밀번호 변경 실패, 다시 변경 부탁드립니다.");
-				uri = "/user/updatePassword";
-			}
-
-		} else {
-			mv.addObject("message", "현재 비밀번호가 다릅니다. 다시 시도 부탁드립니다.");
-			uri = "/user/updatePassword";
-		}
-
-		// 3. 결과(ModelAndView)
-		mv.setViewName(uri);
-		return mv;
-
-	} // updatePassword
+	   } // updatePassword
 
 // -----------------------------------------------------------------------------------------------------------------------
 
@@ -421,19 +418,17 @@ public class UserController {
 
 			// 2. Service
 			if (service.deleteUser(vo) > 0) {
-				rttr.addFlashAttribute("message", "탈퇴 성공, 그 동안 이용해주셔서 감사합니다.");
+				rttr.addFlashAttribute("message", "탈퇴되었습니다, 그 동안 이용해주셔서 감사합니다 :-)");
 
 				if (!"admin".equals(id))
 					session.invalidate();
 
 			} else {
-				rttr.addFlashAttribute("message",
-						"탈퇴 실패, 다시 시도해주시고 계속 실패할 시 Q&A 문의 부탁드립니다.");
+				rttr.addFlashAttribute("message", "탈퇴 실패, 다시 시도해주시고 계속 실패할 시 Q&A 문의 부탁드립니다.");
 			}
 
 		} else {
-			rttr.addFlashAttribute("message",
-					"session 정보 없음, 로그인 후 이용 부탁드립니다.");
+			rttr.addFlashAttribute("message", "정보가 없습니다, 로그인 후 이용 부탁드립니다.");
 		}
 
 		// 3. 결과(ModelAndView)

@@ -126,7 +126,7 @@ public class PcGameController {
 		String realPath = request.getRealPath("/"); // deprecated Method
 
 		if (realPath.contains(".eclipse."))
-			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\pcGameImg\\";
+			realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\pcGameImg\\";
 
 		else
 			realPath += "resources\\pcGameImg\\";
@@ -229,7 +229,7 @@ public class PcGameController {
 		String realPath = request.getRealPath("/"); // deprecated Method
 
 		if (realPath.contains(".eclipse."))
-			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\pcGameImg\\";
+			realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\pcGameImg\\";
 
 		else
 			realPath += "resources\\pcGameImg\\";

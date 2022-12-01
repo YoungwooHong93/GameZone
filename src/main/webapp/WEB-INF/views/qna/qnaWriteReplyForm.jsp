@@ -27,7 +27,6 @@
 	
 	
 			if (confirm("답글을 등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				alert('답글 등록하겠습니다.');
 	           	return true;
 	           	
 			} else {
@@ -75,6 +74,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<form action="qnaWriteReply" method="post">
 			<table>
@@ -110,11 +114,6 @@
 				</tr>
 			</table>
 		</form>
-		<c:if test="${not empty message}">
-			<hr>
-			${message}<br>
-		</c:if>
-		<hr>
 		&nbsp;&nbsp;
 		<a href="qnaBoardList">목록으로</a> &nbsp;&nbsp;
 		<a href="javascript:history.go(-1)">이전으로</a>
@@ -139,7 +138,6 @@
        	</div>
     </footer>
     <!-- Footer section end -->
-
 	<!--====== Javascripts & Jquery ======-->
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

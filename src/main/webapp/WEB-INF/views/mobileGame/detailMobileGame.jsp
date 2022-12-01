@@ -16,7 +16,6 @@
     <script>
        function deleteGame() {
          if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
-            alert(`${one.game_name}가(이) 삭제되었습니다.`);
                  return true; // 삭제
                  
          } else {
@@ -61,6 +60,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
     <main>
         <div class="content-left" align="center">
             <!-- intro -->

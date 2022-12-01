@@ -75,7 +75,6 @@
 					return false;
 					
 				} else
-					alert('비밀번호를 변경하겠습니다.');
 					return true;
 				
 			} else {
@@ -121,7 +120,11 @@
       	</div>
    	</header>
    	<!-- Header section end -->
-   	
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<form action="updatePassword" method="post" id="myForm">
 			<div class="container rounded bg-white">
@@ -130,7 +133,7 @@
 						<div class="row mt-3 p-3 py-5">
 							<div class="col-updatePw">
 								<label class="labels" for="oldPassword">현재 비밀번호</label>
-								<input type="password" name="oldPassword" id="oldPassword" class="controlBox" placeholder="현재 비밀번호"><br>
+								<input type="password" name="oldPassword" id="oldPassword" class="controlBox" placeholder="현재 비밀번호">
 								<div class="updatepwMessage">
 									<b><span id="opMessage" class="eMessage"></span></b>
 								</div>
@@ -138,7 +141,7 @@
 
 							<div class="col-updatePw">
 								<label class="labels" for="password">새 비밀번호</label>
-								<input type="password" name="password" id="password" class="controlBox" placeholder="특수문자 반드시 포함"><br>
+								<input type="password" name="password" id="password" class="controlBox" placeholder="특수문자 반드시 포함">
 								<div class="updatepwMessage">
 									<b><span id="pMessage" class="eMessage"></span></b>
 								</div>
@@ -146,7 +149,7 @@
 							
 							<div class="col-updatePw">
 								<label class="labels" for="password2">새 비밀번호 확인</label>
-								<input type="password" name=password2 id=password2 class="controlBox"><br>
+								<input type="password" name=password2 id=password2 class="controlBox">
 								<div class="updatepwMessage">
 									<b><span id="ppMessage" class="eMessage"></span></b>
 								</div>
@@ -158,18 +161,17 @@
 								<input class="btn btn-primary" type="submit" value="수정" onclick="return inCheck()">
 							</div>
 							<div class="text-center">
-								<a class="btn btn-primary" href="javascript:history.go(-1)">취소</a>
+								<input class="btn btn-primary" type="reset" value="리셋">
+							</div>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<div class="text-center">
+								<a class="btn btn-primary" href="javascript:history.go(-1)">뒤로</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</form>
-		<c:if test="${not empty message}">
-			<script>
-				alert(`${message}`);
-			</script>
-		</c:if>
 	</main>
 	<!-- Footer section -->
     <footer class="footer-section">
