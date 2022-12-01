@@ -106,7 +106,9 @@
 	
 		<c:if test="${not empty loginID}">&nbsp;&nbsp;&nbsp; 
 			<!-- 로그인ID가 비어있지 않다면 = 로그인을 했다면 -->
-			<a href="qnaWriteReplyForm?root=${one.root}&step=${one.step}&indent=${one.indent}&secret=${one.secret}">[답글 달기]</a>&nbsp;&nbsp;&nbsp;
+			<c:if test="${loginID == 'admin'}">
+				<a href="qnaWriteReplyForm?root=${one.root}&step=${one.step}&indent=${one.indent}&secret=${one.secret}">[답글 달기]</a>&nbsp;&nbsp;&nbsp;
+			</c:if>
 			<a href="javascript:history.go(-1)">[목록으로]</a>
 		</c:if>
 		<hr>
