@@ -15,7 +15,7 @@
 		감사합니다.<br><br>
 		<img src="resources/img/oops2.png" width="800" height="500"><br><br>
 	
-		<a href="#" onclick="history.back()"> [Home 가기]</a>
+		<a href="#" onclick="history.back()"> [뒤로가기]</a>
 		</font>
 	</div>
 </body>
