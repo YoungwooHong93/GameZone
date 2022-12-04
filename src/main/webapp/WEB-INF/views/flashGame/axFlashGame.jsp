@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="resources/css/animate.css" />
 	<link rel="shortcut icon" href="resources/img/icon2.ico">
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/axFlashGame.js"></script>
+	<script src="resources/js/axFlashGame.js"></script>
 	<script>
         function detailContent() {
         	alert('로그인 후 상세보기가 가능합니다 :-)')
@@ -46,13 +46,18 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main id="Game_main">
     	<div id="gameSearchBar">
 			<form action="axFlashGame" method="get" id="GameForm">
@@ -63,7 +68,7 @@
                		<!-- <input type="reset" value="취소" onclick="checkClear()"> -->
             	</div>
 	         	<c:if test="${loginID == 'admin'}">
-	            	<a href="insertFlashForm">새로운 PC게임 등록</a>
+	            	<a href="insertFlashForm">새로운 게임 등록</a>
 	         	</c:if>
             	<br>
 			</form>

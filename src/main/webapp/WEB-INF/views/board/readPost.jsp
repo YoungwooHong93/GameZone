@@ -5,25 +5,24 @@
 <head>
    <meta charset="UTF-8">
    <title>GameZone | ${one.title}</title>
-   <link rel="stylesheet" type="text/css" href="resources/css/myStyle.css">
       <!-- Stylesheets -->
    <link rel="stylesheet" href="resources/css/owl.carousel.css" />
    <link rel="stylesheet" href="resources/css/style.css" />
    <link rel="stylesheet" href="resources/css/animate.css" />
    <link rel="shortcut icon" href="resources/img/icon2.ico"/>
    <script src="resources/js/jquery-3.2.1.min.js"></script>
-   <script src="resources/myLib/axReadPost.js"></script>
+   <script src="resources/js/axReadPost.js"></script>
    <script>
 	   function removePost() {
-			
-			if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
-	          	return true; // 삭제
-			} else {
-	          	alert('삭제가 취소되었습니다.');
-				return false;
-			}
-		} // removePost(삭제)
-   </script>
+	      
+	      if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
+	             return true; // 삭제
+	      } else {
+	             alert('삭제가 취소되었습니다.');
+	         return false;
+	      }
+	   } // removePost(삭제)
+	</script>
 </head>
 <body>
 	<!-- Header section -->
@@ -53,106 +52,93 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
       	</div>
    	</header>
    	<!-- Header section end -->
-   	<c:if test="${not empty message}">
+    <c:if test="${not empty message}">
 		<script>
 			alert(`${message}`);
 		</script>		
 	</c:if>
-   	<main>
-		<hr>
-	   	<h2>${one.title}</h2>
-		<c:if test="${not empty one}">
-		   	<table>
-		    	<tr height="40">
-		        	<th bgcolor="DarkKhaki" style="text-align: center;">Seq</th>
-		         	<td>${one.seq}</td>
-		         	<input type="text" value="${one.seq}" id="seq" hidden>
-		      	</tr>
-		      
-		      	<tr height="40">
-		        	<th bgcolor="DarkKhaki" style="text-align: center;">I  D</th>
-		         	<td>${one.id}</td>
-		      	</tr>
-		      
-		      	<tr height="40">
-		        	<th bgcolor="DarkKhaki" style="text-align: center;">Title</th>
-		         	<td>${one.title}</td>
-		      	</tr>
-		      
-		      	<tr height="40">
-		        	<th bgcolor="DarkKhaki" style="text-align: center;">Content</th>
-		         	<td><textarea rows="5" cols="50" readonly>${one.content}</textarea></td>
-		      	</tr>
-		      
-		      	<tr height="40">
-		        	<th bgcolor="DarkKhaki" style="text-align: center;">RegDate</th>
-		         	<td>${one.regdate}</td>
-		      	</tr>
-		      
-		      	<tr height="40">
-		        	<th bgcolor="DarkKhaki" style="text-align: center;">조회수</th>
-		         	<td>${one.cnt}</td>
-		      	</tr>
-			</table>
-		</c:if>
-		<hr>
-		<c:if test="${loginID == one.id || loginID == 'admin'}">
-	   		&nbsp;&nbsp;&nbsp;<a href="readPost?jCode=U&seq=${one.seq}">[게시글 수정]</a>
-	                           <!-- root 추가 : 삭제 시 원글 삭제 or 댓글 삭제 확인을 위함 -->
-	   		&nbsp;&nbsp;&nbsp;<a href="removePost?seq=${one.seq}&root=${one.root}" onclick="return removePost()">[게시글 삭제]</a>
-		</c:if>
+	<main>
+		<div class="readPost_outer">
+			<div class="readPost_container">
+				<div class="board_titleBox">
+					<span class="board_title">${one.title}</span>
+				</div>
+				<c:if test="${not empty one}">
+					<div class="readPost_contents" hidden>
+						<span>Seq</span>
+						<span>${one.seq}</span>
+						<input type="text" value="${one.seq}" id="seq">
+					</div>
+					<div class="readPost_info">
+						<div class="color-choi">${one.id} &nbsp;&nbsp; | &nbsp;&nbsp; ${one.regdate}</div>
+					</div>
+
+					<div class="board_contentBox">
+						<textarea readonly>${one.content}</textarea>
+					</div>
+				</c:if>
+			</div>
+
+			<div class="readPost_btnBox">
+				<c:if test="${loginID == one.id || loginID == 'admin'}">
+					<a href="readPost?jCode=U&seq=${one.seq}" class="readPost_btn">게시글 수정</a>
+					<!-- root 추가 : 삭제 시 원글 삭제 or 댓글 삭제 확인을 위함 -->
+					&nbsp;&nbsp;&nbsp;<a href="removePost?seq=${one.seq}&root=${one.root}" class="readPost_btn" onclick="return removePost()">게시글 삭제</a>
+					&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)" class="readPost_btn">목록으로</a>
+				</c:if>
+				<br>
+			</div>
+			<div id="writeReply" class="replyArea" name="replylist">
+				<div class="writeReply">
+					<c:if test="${not empty loginID}">
+						<!-- textarea -->
+						<textarea rows="3" cols="94" name="content" id="replyContent"
+							placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 글은 법률에 의해 처벌받을 수 있습니다. 건전한 커뮤니티를 위해 자제를 당부드립니다."></textarea>
+						<!-- 등록 -->
+						<input type="button" value="등록" class="sclick">
+					</c:if>
+				</div> <!-- 댓글 폼 -->
+				<div class="reply_btnBox">
+					<ul id="replyaddlist">
+						<c:if test="${not empty list}">
+							<c:forEach var="reply" items="${list}" varStatus="status">
+								<div class="reply_border">
+									<div id="acontent${reply.reply_number}" class="board_reply">
+										<ul>
+											<li class="color-choi">${reply.id} &nbsp;|&nbsp; ${reply.regdate}</li>
+											<li id="replyContentLi${reply.reply_number}"
+											class="replyContentLi">${reply.content}</li>
+										</ul>
+									</div>	
 	
-		<c:if test="${not empty loginID}"> <!-- 로그인ID가 비어있지 않다면 = 로그인을 했다면 -->
-	   		&nbsp;&nbsp;&nbsp;<a href="writeReplyForm?root=${one.root}&step=${one.step}&indent=${one.indent}">[답글 달기]</a>
-	   		&nbsp;&nbsp;&nbsp;<a href="javascript:history.go(-1)">[목록으로]</a>
-		</c:if>
-		<br>
-	    <hr>
-	   	<div id="writeReply" class="searchReply" name="replylist">
-	   		<div>
-	       		<c:if test="${not empty loginID}">
-	           		<!-- textarea -->
-	           		<textarea rows="3" cols="94" name="content" id="replyContent" 
-	           		placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 글은 법률에 의해 처벌받을 수 있습니다. 건전한 커뮤니티를 위해 자제를 당부드립니다."></textarea>
-	           		<!-- 등록 -->
-	           		<input type="button" value="등록" class="sclick">
-	       		</c:if>
-	     	</div> <!-- 댓글 폼 -->
-	     	<div>
-		        <ul id="replyaddlist">
-		        	<c:if test="${not empty list}">
-		            	<c:forEach var="reply" items="${list}" varStatus="status">
-		                	<div id="acontent${reply.reply_number}">
-		                    	<ul>
-		                        	<li class="reply${status.count}">${reply.id} | ${reply.regdate}</li>
-		                        	<li class="reply${status.count}" id="replyContentLi${reply.reply_number}">${reply.content}</li>
-		                     	</ul>
-		                  	</div>
-		                  
-		                  	<input class="replyId" id="replyId" value="${reply.id}" hidden>
-		                  	<input class="reply${status.count}" id="replyNumber${status.count}" value="${reply.reply_number}" name="${reply.reply_number}" hidden>
-		                  	<div id="abt${reply.reply_number}">
-		                    	<!-- 댓글 입력 후 수정, 삭제 -->
-		                     	<c:if test="${loginID == reply.id || loginID == 'admin'}">
-		                        	<input class="reply_update" type="button" value="수정" id="${reply.reply_number}">
-		                        	<input class="reply_delete" type="button" value="삭제" id="${reply.reply_number}">
-		                     	</c:if>
-		                  	</div>
-		               	</c:forEach>
-		            </c:if>
-				</ul>
-			</div> <!-- 댓글 리스트 -->
-	    	<input class="loginId" id="loginId" value="${loginID}" hidden>
-		</div> <!-- replyArea -->
-	   	<hr>
-   	</main>
+									<input class="replyId" id="replyId" value="${reply.id}" hidden>
+									<input id="replyNumber${status.count}" value="${reply.reply_number}"
+										name="${reply.reply_number}" hidden>
+									<div id="abt${reply.reply_number}" class="reply_btns">
+										<!-- 댓글 입력 후 수정, 삭제 -->
+										<c:if test="${loginID == reply.id || loginID == 'admin'}">
+											<input class="reply_update reply_btn" type="button" value="수정"
+												id="${reply.reply_number}">
+											<input class="reply_delete reply_btn" type="button" value="삭제"
+												id="${reply.reply_number}">
+										</c:if>
+									</div>
+								</div>
+							</c:forEach>
+						</c:if>
+					</ul>
+				</div> <!-- 댓글 리스트 -->
+				<input class="loginId" id="loginId" value="${loginID}" hidden>
+			</div> <!-- replyArea -->
+		</div> <!-- readPost_outer -->
+	</main>
     <!-- Footer section -->
     <footer class="footer-section">
     	<div class="container">

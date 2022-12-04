@@ -51,7 +51,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
@@ -102,16 +102,16 @@
 	
 		<hr>
 		<c:if test="${loginID == one.id || loginID == 'admin'}">&nbsp;&nbsp;&nbsp;
-			<a href="qnaReadPost?jCode=U&seq=${one.seq}">[문의글 수정]</a>&nbsp;&nbsp;&nbsp;
+			<a href="qnaReadPost?jCode=U&seq=${one.seq}">[수정]</a>&nbsp;&nbsp;&nbsp;
 										<!-- root 추가 : 삭제 시 원글 삭제 or 댓글 삭제 확인을 위함 -->
-			<a href="qnaRemovePost?seq=${one.seq}&root=${one.root}" onclick="return removeQnA()">[문의글 삭제]</a>
+			<a href="qnaRemovePost?seq=${one.seq}&root=${one.root}" onclick="return removeQnA()">[삭제]</a>
 		</c:if>
 	
 		<c:if test="${not empty loginID}">&nbsp;&nbsp;&nbsp; 
-			<!-- 로그인ID가 비어있지 않다면 = 로그인을 했다면 -->
+			<!-- 로그인ID가 비어있지 않고 admin이라면 -->
 			<c:if test="${loginID == 'admin'}">
-				<a href="qnaWriteReplyForm?root=${one.root}&step=${one.step}&indent=${one.indent}&secret=${one.secret}">[답글 달기]</a>&nbsp;&nbsp;&nbsp;
-			</c:if>
+            	<a href="qnaWriteReplyForm?root=${one.root}&step=${one.step}&indent=${one.indent}&secret=${one.secret}">[답글 달기]</a>&nbsp;&nbsp;&nbsp;
+         	</c:if>
 			<a href="javascript:history.go(-1)">[목록으로]</a>
 		</c:if>
 		<hr>

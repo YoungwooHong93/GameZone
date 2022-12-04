@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="resources/css/style.css" />
 	<link rel="shortcut icon" href="resources/img/icon2.ico">
     <script src="resources/js/jquery-3.2.1.min.js"></script>
-    <script src="resources/myLib/inCheck.js"></script>
+    <script src="resources/js/inCheck.js"></script>
 
     <script>
         let iCheck = false;

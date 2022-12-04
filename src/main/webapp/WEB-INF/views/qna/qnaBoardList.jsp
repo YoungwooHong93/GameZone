@@ -40,7 +40,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
@@ -89,7 +89,7 @@
 			</tr>
 			<c:if test="${not empty list}">
 				<c:forEach var="qna" items="${list}">
-					<tr id="boardtd">
+					<tr class="boardtd">
 						<td style="text-align: center;">${qna.seq}</td>
 						<td>
 							<!-- 답글 등록 후 indent에 따른 들여쓰기 => 답글인 경우에만 적용 -->
@@ -123,7 +123,7 @@
 											<c:out value="${qna.title}" />
 										</a>
 									</c:when>
-									<c:when test="${qna.secret == true}">비밀글은 작성자와 관리자만 볼 수 있습니다.</c:when>
+									<c:when test="${qna.secret == true}">작성자와 관리자만 볼 수 있습니다.</c:when>
 								</c:choose>
 							</c:if>
 
@@ -131,7 +131,7 @@
 							<!-- 비밀글 : 비밀글은 작성자와 관리자만 볼 수 있습니다 / 비밀글 x : ${qna.title} -->
 							<c:if test="${empty loginID}">
 								<c:if test="${qna.secret == false}">${qna.title}</c:if>
-								<c:if test="${qna.secret == true}">비밀글은 작성자와 관리자만 볼 수 있습니다.</c:if>
+								<c:if test="${qna.secret == true}">작성자와 관리자만 볼 수 있습니다.</c:if>
 							</c:if>
 						</td>
 

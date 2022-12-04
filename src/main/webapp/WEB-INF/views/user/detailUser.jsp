@@ -11,7 +11,6 @@
 	<link rel="stylesheet" href="resources/css/animate.css" />
 	<link rel="shortcut icon" href="resources/img/icon2.ico">
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/inCheck.js"></script>
 	<script>
 		function deleteUser() {
 			if (confirm("탈퇴하시겠습니까? (Yes : 확인 / No : 취소)")) {
@@ -52,7 +51,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>

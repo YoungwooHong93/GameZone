@@ -13,14 +13,35 @@
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<script>
 		function updateGame() {
+			
+			if ($('#mobile_category').val() == null || $('#mobile_category').val() == '') {
+				alert('카테고리를 입력하세요.');
+				return false;
+			}
+	
+			if ($('#mobile_price').val() == null || $('#mobile_price').val() == '') {
+				alert('가격을 입력하세요.');
+				return false;
+			}
+	
+			if ($('#mobile_grade').val() == null || $('#mobile_grade').val() == '') {
+				alert('등급을 입력하세요.');
+				return false;
+			}
+			if ($('#mobile_site').val() == null || $('#mobile_site').val() == '') {
+				alert('사이트를 입력하세요.');
+				return false;
+			}
+			
 			if (confirm("수정하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				alert(`${one.game_name}을(를) 수정하겠습니다.`);
-	           	return true; // 삭제
+				$('#updateMobileGameForm').submit();
+	           	return true;
 	           	
 			} else {
 	           	alert('수정이 취소되었습니다.');
 				return false;
 			}
+			
 		} // updateGame
 	</script>
 </head>
@@ -52,22 +73,22 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
    	<main>
 		<h3>${param.game_name}</h3>
-		<c:if test="${not empty message}">
-			${message}<br>
-		</c:if>
-		<hr>
-		<form action="updateMobileGame" method="post"
-			enctype="multipart/form-data">
-			<table>
+		<form action="updateMobileGame" class="update_game_form" id="updateMobileGameForm" method="post" enctype="multipart/form-data">
+			<table id="update_game">
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Image</th>
 					<td><img src="${one.game_img}" class="new_img" width="80"
@@ -88,50 +109,61 @@
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Category</th>
-					<td><input type="text" name="category" value="${one.category}"
-						size="40"></td>
+					<td>
+						<input type="text" name="category" id="mobile_category" value="${one.category}">
+					</td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Game_Name</th>
-					<td><input type="text" name="game_name"
-						value="${one.game_name}" size="40" readonly></td>
+					<td>
+						<input type="text" name="game_name" id="mobile_game_name" value="${one.game_name}" readonly>
+					</td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Launch</th>
-					<td><input type="text" name="launch" value="${one.launch}"
-						size="40"></td>
+					<td>
+						<input type="text" name="launch" value="${one.launch}">
+					</td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Publisher</th>
-					<td><input type="text" name="publisher" value="${one.publisher}" size="40"></td>
+					<td>
+						<input type="text" name="publisher" value="${one.publisher}">
+					</td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Price</th>
-					<td><input type="text" name="price" value="${one.price}" size="40"></td>
+					<td><input type="text" name="price" id="mobile_price" value="${one.price}"></td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Grade</th>
-					<td><input type="text" name="grade" value="${one.grade}"></td>
+					<td>
+						<input type="text" name="grade" id="mobile_grade" value="${one.grade}">
+					</td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Site</th>
-					<td><input type="text" name="site" value="${one.site}" size="40"></td>
+					<td>
+						<input type="text" name="site" id="mobile_site" value="${one.site}">
+					</td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Intro</th>
-					<td><input type="text" name="intro" value="${one.intro}" size="40"></td>
+					<td><input type="text" name="intro" value="${one.intro}"></td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Video</th>
-					<td><input type="text" name="video" value="${one.video}" size="40"></td>
+					<td>
+						<input type="text" name="video" value="${one.video}">
+					</td>
 				</tr>
 	
 				<tr>
@@ -145,9 +177,6 @@
 		</form>
 		&nbsp;&nbsp;&nbsp;
 		<a href="javascript:history.go(-1)">[이전으로]</a>
-		<c:if test="${not empty message}">
-				${message}<br>
-		</c:if>
 	</main>
 	<!-- Footer section -->
     <footer class="footer-section">

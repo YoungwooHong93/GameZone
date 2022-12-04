@@ -6,6 +6,7 @@
 
 	<!-- ============================================================= -->
 
+	<!-- PcGameList -->
 	<select id="pcGameList" resultType="vo.GameVO">
 		select game_img, game_name
 		from pcgame
@@ -14,7 +15,6 @@
 			<bind name="keyVal" value="'%' + keyword + '%'" />
 			and (game_name like #{keyVal})
 		</if>
-
 		<if test="check != null">
 			<foreach collection="check" item="it" open=" and ( " close=")" separator="or ">
 				FIND_IN_SET(#{it}, category)
@@ -41,9 +41,13 @@
 
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
+	<select id="detailPcGame" resultType="vo.GameVO">
+		select * from PcGame
+		where game_name = #{game_name}
+	</select>
+	
 	<insert id="insertPcGame">
-		<selectKey keyProperty="game_number" resultType="int"
-			order="BEFORE">
+		<selectKey keyProperty="game_number" resultType="int" order="BEFORE">
 			select IFNULL(max(game_number), 0) + 1 from pcgame
 		</selectKey>
 		insert into PcGame
@@ -57,30 +61,15 @@
 		where game_name = #{game_name}
 	</update>
 
-	<update id="countUp">
-		update pcgame set count = count + 1
-		where game_number = #{game_number}
-	</update>
-
-	<insert id="insertInfo">
-		insert into ranking (id, game_number)
-		values(#{id}, #{game_number})
-	</insert>
-
-	<select id="selectOne" resultType="vo.RankingVO">
-		select * from Ranking
-		where id = #{id} and game_number = #{game_number}
-	</select>
-
-	<select id="detailPcGame" resultType="vo.GameVO">
-		select * from PcGame
-		where game_name = #{game_name}
-	</select>
-
 	<delete id="deletePcGame">
 		delete from PcGame
 		where game_name = #{game_name}
 	</delete>
+	
+	<select id="selectOne" resultType="vo.RankingVO">
+		select * from Ranking
+		where id = #{id} and game_number = #{game_number}
+	</select>
 
 	<select id="showList" resultType="vo.GameVO">
 		Select game_name
@@ -88,5 +77,15 @@
 		Order By count desc
 		Limit 0,10
 	</select>
+	
+	<insert id="insertInfo">
+		insert into ranking (id, game_number)
+		values(#{id}, #{game_number})
+	</insert>
+	
+	<update id="countUp">
+		update pcgame set count = count + 1
+		where game_number = #{game_number}
+	</update>
 
 </mapper>

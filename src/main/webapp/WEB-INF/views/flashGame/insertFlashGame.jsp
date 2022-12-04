@@ -13,14 +13,26 @@
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<script>
 		function insertGame() {
-
+			
+			if ($('#flash_game_name').val() == null || $('#flash_game_name').val() == '') {
+				alert('게임 이름을 입력하세요.');
+				return false;
+			}
+	
+			if ($('#flash_site').val() == null || $('#flash_site').val() == '') {
+				alert('사이트를 입력하세요.');
+				return false;
+			}
+			
 			if (confirm("게임을 등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
+				$('#insertFlashGameForm').submit();
 				return true;
 				
 			} else {
 				alert('등록이 취소되었습니다.');
 				return false;
 			}
+			
 		} // insertGame
 	</script>
 </head>
@@ -52,7 +64,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
@@ -65,7 +77,7 @@
 		</script>		
 	</c:if>
    	<main>
-		<form action="insertFlashGame" method="post" enctype="multipart/form-data">
+		<form action="insertFlashGame" method="post" id="insertFlashGameForm" enctype="multipart/form-data">
 			<table>
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Image</th>
@@ -88,12 +100,12 @@
 					
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Game_Name</th>
-					<td><input type="text" name="game_name" placeholder="게임 이름" size="40"></td>
+					<td><input type="text" name="game_name" id="flash_game_name" placeholder="게임 이름" size="40"></td>
 				</tr>
 					
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Site</th>
-					<td><input type="text" name="site" placeholder="사이트" size="40"></td>
+					<td><input type="text" name="site" id="flash_site" placeholder="사이트" size="40"></td>
 				</tr>
 					
 				<tr>

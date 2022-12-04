@@ -3,27 +3,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
-   <title>GameZone | 새로운 게임 등록</title>
-   <link rel="stylesheet" type="text/css" href="resources/css/myStyle.css">
-   <link rel="stylesheet" href="resources/css/owl.carousel.css" />
-   <link rel="stylesheet" href="resources/css/style.css" />
-   <link rel="stylesheet" href="resources/css/animate.css" />
-   <link rel="shortcut icon" href="resources/img/icon2.ico">
-   <script src="resources/js/jquery-3.2.1.min.js"></script>
-   <script>
-      function insertGame() {
+	<meta charset="UTF-8">
+	<title>GameZone | 새로운 게임 등록</title>
+	<link rel="stylesheet" type="text/css" href="resources/css/myStyle.css">
+	<link rel="stylesheet" href="resources/css/owl.carousel.css" />
+	<link rel="stylesheet" href="resources/css/style.css" />
+	<link rel="stylesheet" href="resources/css/animate.css" />
+	<link rel="shortcut icon" href="resources/img/icon2.ico">
+	<script src="resources/js/jquery-3.2.1.min.js"></script>
+	<script>
+		function insertGame() {
 
-         if (confirm("게임을 등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
-            alert('게임을 등록하겠습니다.');
-            return true;
-            
-         } else {
-            alert('등록이 취소되었습니다.');
-            return false;
-         }
-      } // insertGame
-   </script>
+			if ($('#pc_category').val() == null || $('#pc_category').val() == '') {
+				alert('카테고리를 입력하세요.');
+				return false;
+			}
+	
+			if ($('#pc_game_name').val() == null || $('#pc_game_name').val() == '') {
+				alert('게임 이름을 입력하세요.');
+				return false;
+			}
+			if ($('#pc_price').val() == null || $('#pc_price').val() == '') {
+				alert('가격을 입력하세요.');
+				return false;
+			}
+	
+			if ($('#pc_grade').val() == null || $('#pc_grade').val() == '') {
+				alert('등급을 입력하세요.');
+				return false;
+			}
+			if ($('#pc_site').val() == null || $('#pc_site').val() == '') {
+				alert('사이트를 입력하세요.');
+				return false;
+			}
+			
+			if (confirm("게임을 등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
+				$('#insertPcGameForm').submit();
+				return true;
+				
+			} else {
+				alert('등록이 취소되었습니다.');
+				return false;
+			}
+			
+		} // insertGame
+	</script>
 </head>
 <body>
 	<!-- Header section -->
@@ -53,7 +77,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
@@ -61,7 +85,7 @@
    	</header>
    	<!-- Header section end -->
    	<main>
-		<form action="insertPcGame" id="insert_game_form" method="post" enctype="multipart/form-data">
+		<form action="insertPcGame" class="insert_game_form" id="insertPcGameForm" method="post" enctype="multipart/form-data">
 			<table id="insert_game">
 				<thead>
 					<tr class="insert_game_row">
@@ -90,12 +114,12 @@
 	            <tbody>
 		        	<tr>
 		           		<th>장르</th>
-		           		<td><input type="text" name="category" placeholder="카테고리(영문) 예) action, rpg"></td>
+		           		<td><input type="text" name="category" id="pc_category" placeholder="카테고리(영문) 예) action, rpg"></td>
 		        	</tr>
 		  
 		        	<tr>
 		           		<th>게임이름</th>
-		           		<td><input type="text" name="game_name" placeholder="게임 이름"></td>
+		           		<td><input type="text" name="game_name" id="pc_game_name" placeholder="게임 이름"></td>
 		        	</tr>
 		        
 		        	<tr>
@@ -110,17 +134,17 @@
 		        
 		        	<tr>
 		           		<th>가격</th>
-		           		<td><input type="text" name="price" placeholder="가격"></td>
+		           		<td><input type="text" name="price" id="pc_price" placeholder="가격"></td>
 		        	</tr>
 		  
 		        	<tr>
 		           		<th>이용 등급</th>
-		           		<td><input type="text" name="grade" placeholder="등급"></td>
+		           		<td><input type="text" name="grade" id="pc_grade" placeholder="등급"></td>
 		        	</tr>
 		        
 		        	<tr>
 		           		<th>공식 사이트</th>
-		           		<td><input type="text" name="site" placeholder="사이트"></td>
+		           		<td><input type="text" name="site" id="pc_site" placeholder="사이트"></td>
 		        	</tr>
 		        
 		        	<tr>

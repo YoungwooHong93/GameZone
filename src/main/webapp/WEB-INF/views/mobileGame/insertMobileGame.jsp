@@ -14,13 +14,38 @@
 	<script>
 		function insertGame() {
 
+			if ($('#mobile_category').val() == null || $('#mobile_category').val() == '') {
+				alert('카테고리를 입력하세요.');
+				return false;
+			}
+	
+			if ($('#mobile_game_name').val() == null || $('#mobile_game_name').val() == '') {
+				alert('게임 이름을 입력하세요.');
+				return false;
+			}
+			if ($('#mobile_price').val() == null || $('#mobile_price').val() == '') {
+				alert('가격을 입력하세요.');
+				return false;
+			}
+	
+			if ($('#mobile_grade').val() == null || $('#mobile_grade').val() == '') {
+				alert('등급을 입력하세요.');
+				return false;
+			}
+			if ($('#mobile_site').val() == null || $('#mobile_site').val() == '') {
+				alert('사이트를 입력하세요.');
+				return false;
+			}
+			
 			if (confirm("게임을 등록하시겠습니까? (Yes : 확인 / No : 취소)")) {
+				$('#insertMobileGameForm').submit();
 				return true;
 				
 			} else {
 				alert('등록이 취소되었습니다.');
 				return false;
 			}
+			
 		} // insertGame
 	</script>
 </head>
@@ -52,7 +77,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
@@ -65,8 +90,8 @@
 		</script>		
 	</c:if>
    	<main>
-		<form action="insertMobileGame" method="post" enctype="multipart/form-data">
-			<table>
+		<form action="insertMobileGame" class="insert_game_form" id="insertMobileGameForm" method="post" enctype="multipart/form-data">
+			<table id="insert_game">
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Image</th>
 					<td>
@@ -88,12 +113,12 @@
 					
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Category</th>
-					<td><input type="text" name="category" placeholder="카테고리(영문)" size="40"></td>
+					<td><input type="text" name="category" id="mobile_category" placeholder="카테고리(영문)" size="40"></td>
 				</tr>
 			
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Game_Name</th>
-					<td><input type="text" name="game_name" placeholder="게임 이름" size="40"></td>
+					<td><input type="text" name="game_name" id="mobile_game_name" placeholder="게임 이름" size="40"></td>
 				</tr>
 					
 				<tr height="40">
@@ -108,17 +133,17 @@
 					
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Price</th>
-					<td><input type="text" name="price" placeholder="가격" size="40"></td>
+					<td><input type="text" name="price" id="mobile_price" placeholder="가격" size="40"></td>
 				</tr>
 			
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Grade</th>
-					<td><input type="text" name="grade" placeholder="등급" size="40"></td>
+					<td><input type="text" name="grade" id="mobile_grade" placeholder="등급" size="40"></td>
 				</tr>
 					
 				<tr height="40">
 					<th bgcolor="YellowGreen" style="text-align: center;">Site</th>
-					<td><input type="text" name="site" placeholder="사이트" size="40"></td>
+					<td><input type="text" name="site" id="mobile_site" placeholder="사이트" size="40"></td>
 				</tr>
 					
 				<tr height="40">

@@ -127,7 +127,7 @@ public class MobileGameController {
 		System.out.println("** realPath = " + realPath);
 
 		if (realPath.contains(".eclipse."))
-			realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\mobileGameImg\\";
+			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\mobileGameImg\\";
 
 		else
 			realPath += "resources\\mobileGameImg\\";
@@ -230,7 +230,7 @@ public class MobileGameController {
 		String realPath = request.getRealPath("/"); // deprecated Method
 
 		if (realPath.contains(".eclipse."))
-			realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\mobileGameImg\\";
+			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\mobileGameImg\\";
 
 		else
 			realPath += "resources\\mobileGameImg\\";

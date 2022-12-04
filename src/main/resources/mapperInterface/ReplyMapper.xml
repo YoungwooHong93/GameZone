@@ -10,8 +10,7 @@
 	</select>
 
 	<insert id="writeReply">
-		<selectKey keyProperty="reply_number" resultType="int"
-			order="BEFORE">
+		<selectKey keyProperty="reply_number" resultType="int" order="BEFORE">
 			select IFNULL(max(reply_number), 0) + 1 
 			from Reply
 		</selectKey>

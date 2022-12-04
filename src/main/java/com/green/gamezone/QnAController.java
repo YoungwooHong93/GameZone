@@ -52,8 +52,6 @@ public class QnAController {
 		// 2. Service
 		vo = service.readPost(vo);
 
-		System.out.println(vo);
-
 		if (vo != null) {
 			
 			// 2.1) 조회수 증가
@@ -153,7 +151,6 @@ public class QnAController {
 		// 1. 요청
 		String uri = "/qna/qnaReadPost";
 
-		System.out.println(vo);
 		mv.addObject("one", vo);
 
 		// 2. Service
@@ -171,7 +168,7 @@ public class QnAController {
 
 	} // modifyPost
 
-	// ----------------------------------------------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------------------------------------------
 
 	// ** removePost : 게시글 삭제
 	@RequestMapping(value = "/qnaRemovePost")

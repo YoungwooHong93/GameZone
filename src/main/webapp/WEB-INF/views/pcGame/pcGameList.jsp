@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="resources/css/animate.css" />
 	<link rel="shortcut icon" href="resources/img/icon2.ico">
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/axPcGame.js"></script>
+	<script src="resources/js/axPcGame.js"></script>
 	<script>
 		function detailContent() {
 			alert('로그인 후 상세보기가 가능합니다 :-)')

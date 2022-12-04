@@ -118,7 +118,8 @@ public class UserController {
 			}
 
 		} else {
-			mv.addObject("message", request.getParameter("id") + "님의 정보가 존재하지 않습니다.");
+			mv.addObject("message",
+					request.getParameter("id") + "님의 정보가 존재하지 않습니다 **");
 		}
 
 		mv.setViewName(uri);
@@ -225,9 +226,10 @@ public class UserController {
 		vo.setDomain(domain);
 
 		String realPath = request.getRealPath("/"); // deprecated Method
+		System.out.println("** realPath = " + realPath);
 
 		if (realPath.contains(".eclipse."))
-			realPath = "C:\\Users\\User\\git\\GameZone\\src\\main\\webapp\\resources\\user_uploadImg\\";
+			realPath = "D:\\MTest\\myWork\\GameZone\\src\\main\\webapp\\resources\\user_uploadImg\\";
 
 		else
 			realPath += "resources\\user_uploadImg\\";
@@ -258,10 +260,10 @@ public class UserController {
 
 		// 2. Service
 		if (service.joinUser(vo) > 0) {
-			mv.addObject("message", "가입해주셔서 감사합니다. 로그인 후 이용해주세요.");
+			mv.addObject("message", "회원가입 되었습니다. 로그인 후 이용해주세요.");
 
 		} else {
-			mv.addObject("message", "회원가입 실패. 다시 가입 시도 부탁드립니다.");
+			mv.addObject("message", "회원가입 실패. 다시 가입 부탁드립니다.");
 			uri = "/user/joinUser";
 		}
 
@@ -278,7 +280,9 @@ public class UserController {
 	   public ModelAndView updateProfile(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, UserVO vo, RedirectAttributes rttr) throws IOException {
 
 	      // 1. 요청
+	      //String uri = "redirect:detailUser?id=" + vo.getId();
 	      String uri = "/user/detailUser";
+
 	      
 	      mv.addObject("one", vo);
 
@@ -330,6 +334,7 @@ public class UserController {
 	      // 2. Service
 	      if (service.updateProfile(vo) > 0) {
 	         mv.addObject("one", vo); // 수정된 vo를 보관
+	         //rttr.addFlashAttribute("message", "정보 수정이 완료되었습니다.");
 	         mv.addObject("message", "정보 수정이 완료되었습니다.");
 
 	      } else {
@@ -418,17 +423,19 @@ public class UserController {
 
 			// 2. Service
 			if (service.deleteUser(vo) > 0) {
-				rttr.addFlashAttribute("message", "탈퇴되었습니다, 그 동안 이용해주셔서 감사합니다 :-)");
+				rttr.addFlashAttribute("message", "탈퇴 성공, 그 동안 이용해주셔서 감사합니다.");
 
 				if (!"admin".equals(id))
 					session.invalidate();
 
 			} else {
-				rttr.addFlashAttribute("message", "탈퇴 실패, 다시 시도해주시고 계속 실패할 시 Q&A 문의 부탁드립니다.");
+				rttr.addFlashAttribute("message",
+						"탈퇴 실패, 다시 시도해주시고 계속 실패할 시 Q&A 문의 부탁드립니다.");
 			}
 
 		} else {
-			rttr.addFlashAttribute("message", "정보가 없습니다, 로그인 후 이용 부탁드립니다.");
+			rttr.addFlashAttribute("message",
+					"session 정보 없음, 로그인 후 이용 부탁드립니다.");
 		}
 
 		// 3. 결과(ModelAndView)

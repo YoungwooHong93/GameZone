@@ -4,37 +4,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>GameZone | ${one.game_name}</title>
-    <link rel="stylesheet" type="text/css" href="/css/myStyle.css">
-    <link rel="stylesheet" href="resources/css/owl.carousel.css" />
-    <link rel="stylesheet" href="resources/css/style.css" />
-    <link rel="stylesheet" href="resources/css/animate.css" />
-    <link rel="stylesheet" href="resources/css/detailGame.css" />
-    <link rel="shortcut icon" href="resources/img/icon2.ico">
-    <script src="resources/js/jquery-3.2.1.min.js"></script>
-    <script>
-       function deleteGame() {
-         if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
-            alert(`${one.game_name}가(이) 삭제되었습니다.`);
-                 return true; // 삭제
+	<meta charset="UTF-8">
+	<title>GameZone | ${one.game_name}</title>
+	<link rel="stylesheet" type="text/css" href="/css/myStyle.css">
+	<link rel="stylesheet" href="resources/css/owl.carousel.css" />
+	<link rel="stylesheet" href="resources/css/style.css" />
+	<link rel="stylesheet" href="resources/css/animate.css" />
+	<link rel="stylesheet" href="resources/css/detailGame.css" />
+	<link rel="shortcut icon" href="resources/img/icon2.ico">
+	<script src="resources/js/jquery-3.2.1.min.js"></script>
+	<script>
+   		function deleteGame() {
+        	if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
+            	return true; // 삭제
                  
-         } else {
-                 alert('삭제가 취소되었습니다.');
-            return false;
-         }
-       } // deleteGame
-       
-       function goSite(site) {
-    	   console.log($('.btmSocial').val());
-		if ($('.btmSocial').val() == '' || $('.btmSocial').val() == null) {
-			location.href="errorPage/exception_404.jsp";
-		} else {
-			location.href=site;
-		}
-       
-       } // goSite
-    </script>
+         	} else {
+            	alert('삭제가 취소되었습니다.');
+            	return false;
+         	}
+       	} // deleteGame
+      
+		function goSite(site) {
+        	console.log($('.btmSocial').val());
+           
+	       	if ($('.btmSocial').val() == '' || $('.btmSocial').val() == null) {
+	        	location.href="errorPage/exception_404.jsp";
+	          
+	       	} else {
+	        	location.href=site;
+	       	}
+        
+		} // goSite
+	</script>
 </head>
 
 <body>
@@ -65,13 +66,18 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
       	</div>
    	</header>
    	<!-- Header section end -->
+   	<c:if test="${not empty message}">
+		<script>
+			alert(`${message}`);
+		</script>		
+	</c:if>
     <main>
         <div class="content-left" align="center">
             <!--기본 정보-->
@@ -126,7 +132,7 @@
                                 <li class="rightA">${one.grade}</li>
                             </ul>
                             <p class="btmSocial" onclick="return goSite(${one.site})">
-                                <a href="${one.site}" target="_blank">공식사이트</a>
+                            	<a href="${one.site}" target="_blank">공식사이트</a>
                             </p>
                         </div>
                     </div>
@@ -159,6 +165,7 @@
             <c:if test="${loginID=='admin'}">
                 &nbsp;&nbsp;<a href="detailPcGame?jCode=U&game_name=${one.game_name}">[게임 수정]</a>
                 &nbsp;&nbsp;<a href="deletePcGame?game_name=${one.game_name}" onclick="return deleteGame()">[게임 삭제]</a>
+                &nbsp;&nbsp;<a href="javascript:history.go(-1)">[목록]</a>
             </c:if>
         </div>
     </main>

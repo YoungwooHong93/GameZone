@@ -93,6 +93,8 @@ td > a:first-child {
 #resultArea tr {
    display: inline-block;
    padding: 18px;
+   max-width: 267px;
+   max-height: 341px;
 }
 
 table > tr:first-child {
@@ -119,8 +121,10 @@ table > tr:first-child {
   	border: 2px solid goldenrod;
     position: fixed;
     width: 12.5%;
+    max-width: 240px;
+    max-height: 55%;
     border-radius: 10px;
-    transform: translateX(-120%) translateY(10%);
+    transform: translateX(-120%) translateY(11%);
 }
 
 #Game_main > #rank_section > span {
@@ -130,12 +134,25 @@ table > tr:first-child {
     color: goldenrod;
 }
 
+/* .rank_list::-webkit-scrollbar {
+    display: none;
+} */
+
 .rank_list {
     text-align: left;
     list-style-position: inside;
     padding-left: 10px;
     line-height: 45px;
     color: #ffffff;
+}
+
+.rank_list > li {
+	max-height: 45px;
+	overflow: hidden;
+}
+
+.rank_list span:hover {
+	color: #ffb320;
 }
 
 .flash_td {

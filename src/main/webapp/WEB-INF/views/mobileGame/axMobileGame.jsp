@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="resources/css/animate.css" />
 	<link rel="shortcut icon" href="resources/img/icon2.ico">
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/axMobileGame.js"></script>
+	<script src="resources/js/axMobileGame.js"></script>
 	<script>
     	function checkClear() {
         	$('.clear').attr('checked', false);
@@ -51,7 +51,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
@@ -356,7 +356,7 @@
                		<input type="reset" value="취소" onclick="checkClear()">
             	</div>
 	         	<c:if test="${loginID == 'admin'}">
-	            	<a href="insertPcForm">새로운 PC게임 등록</a>
+	            	<a href="insertPcForm">새로운 게임 등록</a>
 	         	</c:if>
             	<br>
 			</form>

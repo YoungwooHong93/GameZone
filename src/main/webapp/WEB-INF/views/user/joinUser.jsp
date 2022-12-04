@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="resources/css/animate.css" />
 	<link rel="shortcut icon" href="resources/img/icon2.ico">
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
-	<script src="resources/myLib/inCheck.js"></script>
+	<script src="resources/js/inCheck.js"></script>
 	<script>
 		function idDupCheck() {
 			// 1) id 무결성 확인
@@ -329,7 +329,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
@@ -483,7 +483,7 @@
 									<select class="email-select" name="domain" id="domain">
 										<option value="1">직접 입력</option>
 										<option value="@naver.com">@naver.com</option>
-										<option value="@google.com">@gmail.com</option>
+										<option value="@gmail.com">@gmail.com</option>
 										<option value="@daum.net">@daum.net</option>
 										<option value="@nate.com">@nate.com</option>
 										<option value="@kakao.com">@kakao.com</option>

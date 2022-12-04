@@ -13,14 +13,21 @@
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<script>
 		function updateGame() {
+			
+			if ($('#flash_site').val() == null || $('#flash_site').val() == '') {
+				alert('사이트를 입력하세요.');
+				return false;
+			}
+			
 			if (confirm("수정하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				alert(`${one.game_name}을(를) 수정하겠습니다.`);
+				$('#updateFlashGameForm').submit();
 	           	return true;
 	           	
 			} else {
 	           	alert('수정이 취소되었습니다.');
 				return false;
 			}
+			
 		} // updateGame
 	</script>
 </head>
@@ -52,7 +59,7 @@
                   		<a href="userList">회원 리스트</a> / <a href="logout">로그아웃</a>
                		</c:when>
                		<c:otherwise>
-                  		<a href="loginUser">로그인</a> / <a href="joinForm">회원가입</a>
+                  		<a href="loginForm">로그인</a> / <a href="joinForm">회원가입</a>
                		</c:otherwise>
             	</c:choose>
          	</div>
@@ -67,7 +74,7 @@
 			</script>
 		</c:if>
 		<hr>
-		<form action="updateFlashGame" method="post" enctype="multipart/form-data">
+		<form action="updateFlashGame" method="post" id="updateFlashGameForm" enctype="multipart/form-data">
 			<table>
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Image</th>
@@ -94,14 +101,14 @@
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Game_Name</th>
 					<td>
-						<input type="text" name="game_name" value="${one.game_name}" size="40" readonly>
+						<input type="text" name="game_name" value="${one.game_name}" readonly>
 					</td>
 				</tr>
 	
 				<tr height="40">
 					<th bgcolor="DarkSeaGreen" style="text-align: center;">Site</th>
 					<td>
-						<input type="text" name="site" value="${one.site}" size="40">
+						<input type="text" name="site" id="flash_site" value="${one.site}">
 					</td>
 				</tr>
 	

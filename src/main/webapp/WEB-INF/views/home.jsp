@@ -67,7 +67,7 @@
                   		</p>
                    		<c:if test="${not empty loginID}">
                   			<!-- detailPcGame?game_name=연결시킬 게임이름 -->
-                     		<a href="detailPcGame?game_name=Super%20Animal%20Royale" class="site-btn" onclick="loginCheck()">더 보기</a>
+                     		<a href="detailPcGame?game_name=Euro%20Truck%20Simulator%202" class="site-btn" onclick="loginCheck()">더 보기</a>
                    		</c:if> 
                   
                   		<c:if test="${empty loginID}">
@@ -90,7 +90,7 @@
 	                  	</p>
 	                  	<c:if test="${not empty loginID}">
 	                    	<!-- detailPcGame?game_name=연결시킬 게임이름 -->
-	                     	<a href="detailPcGame?game_name=Super%20Animal%20Royale" class="site-btn">더 보기</a>
+	                     	<a href="detailPcGame?game_name=PUBG:%20배틀그라운드" class="site-btn">더 보기</a>
 	                  	</c:if>
 	                  
 	                  	<c:if test="${empty loginID}">

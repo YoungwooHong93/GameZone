@@ -58,8 +58,6 @@ public class ReplyController {
 	@RequestMapping(value = "/modifyReply")
 	public ModelAndView modifyReply(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, ReplyVO vo) {
 	
-		System.out.println(vo);
-	
 		response.setContentType("text/html; charset=UTF-8");
 	
 		mv.addObject("one", vo);
@@ -70,7 +68,6 @@ public class ReplyController {
 		} else {
 			mv.addObject("message", "201");
 		}
-		System.out.println(vo);
 		
 		mv.setViewName("jsonView");
 		return mv;
