@@ -79,12 +79,12 @@
 	<main>
 		<div class="board_top">
 			<a href="https://lineagem.plaync.com/preorder/record/oasis2you/index?LM=19208101" target="_blank">
-				<img src="resources/img/lineagem.jpg">
+				<img src="resources/img/aion.jpg">
 			</a>
 		</div>
 		<div id="board_bg_set">
 			<a href="https://rox.gnjoy.com/pre-register?af_xp=email&pid=Email&c=ApolloMKTMedia&af_adset=m11&af_ad=ruliwebpc" target="_blank">
-				<img id="board_img_left" alt="ragnarokX" src="resources/img/ragnarokX_left.jpg">
+				<img id="board_img_left" alt="ragnarokX" src="resources/img/dungeon_left.jpg">
 			</a>
 			
 			<div class="section-title">
@@ -153,7 +153,7 @@
 				</c:if>
 			</table>
 			<a href="https://rox.gnjoy.com/pre-register?af_xp=email&pid=Email&c=ApolloMKTMedia&af_adset=m11&af_ad=ruliwebpc" target="_blank">
-				<img id="board_img_right" alt="ragnarokX" src="resources/img/ragnarokX_right.jpg">
+				<img id="board_img_right" alt="ragnarokX" src="resources/img/dungeon_right.jpg">
 			</a>
 		</div>
 		<!-- Criteria_Page -->
