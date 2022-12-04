@@ -14,8 +14,8 @@
 		궁금한 점이 있으시면 언제든 Q&A를 통해 문의해주시기 바랍니다.<br><br>
 		감사합니다.<br>
 		<img src="resources/img/oops.jpg" width="600" height="400"><br><br>
-	
-		<a href="#" onclick="history.back()"> [Home 가기]</a>
+		
+		<a href="#" onclick="history.back()"> [뒤로가기]</a>
 		</font>
 	</div>
 </body>

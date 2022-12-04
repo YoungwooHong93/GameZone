@@ -24,6 +24,16 @@
             return false;
          }
        } // deleteGame
+       
+       function goSite(site) {
+    	   console.log($('.btmSocial').val());
+		if ($('.btmSocial').val() == '' || $('.btmSocial').val() == null) {
+			location.href="errorPage/exception_404.jsp";
+		} else {
+			location.href=site;
+		}
+       
+       } // goSite
     </script>
 </head>
 
@@ -115,7 +125,7 @@
                                 <li class="leftA">이용등급 : </li>
                                 <li class="rightA">${one.grade}</li>
                             </ul>
-                            <p class="btmSocial">
+                            <p class="btmSocial" onclick="return goSite(${one.site})">
                                 <a href="${one.site}" target="_blank">공식사이트</a>
                             </p>
                         </div>
