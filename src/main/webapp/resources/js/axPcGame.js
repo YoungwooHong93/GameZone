@@ -15,7 +15,7 @@ $(function() {
 				$('#resultArea').html(resultPage);
 			},
 			error: function() {
-				$('#resultArea').html('** 서버 오류 ! 잠시 후 다시 시도해주세요');
+				$('#resultArea').html('서버 오류, 잠시 후 다시 시도해주시기를 바랍니다.');
 			}
 
 		}); // ajax
@@ -33,7 +33,7 @@ $(function() {
 				$('#resultArea').html(resultPage);
 			},
 			error: function() {
-				$('#resultArea').html('** 서버 오류 ! 잠시 후 다시 시도해주세요');
+				$('#resultArea').html('서버 오류, 잠시 후 다시 시도해주시기를 바랍니다.');
 			}
 
 		}); // ajax
