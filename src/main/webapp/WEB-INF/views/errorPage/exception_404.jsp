@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>E R R O R 5 0 0</title>
+	<title>E R R O R 4 0 4</title>
 	<style>
 		body {
 			background-color: LavenderBlush;

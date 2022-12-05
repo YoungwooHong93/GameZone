@@ -86,7 +86,6 @@
 		</script>		
 	</c:if>
    	<main>
-		<h3>${param.game_name}</h3>
 		<form action="updatePcGame" class="update_game_form" id="updatePcGameForm" method="post" enctype="multipart/form-data">
 			<table id="update_game">
 				<thead>
