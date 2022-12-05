@@ -7,7 +7,7 @@
 	<select id="searchPost" resultType="vo.QnAVO">
 		select seq, id, title, DATE_FORMAT(regdate, '%Y-%m-%d %H:%i') regdate, cnt, root, step, indent, secret
 		from qaboard
-		where (seq>0)
+		where (seq > 0)
 		order by root desc, step asc
 		limit #{sno}, #{rowsPerPage}
 	</select>
@@ -29,8 +29,8 @@
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
 			select IFNULL(max(seq),0)+1 from qaboard
 		</selectKey>
-		insert into qaboard(seq,id,title,content,root,secret)
-		values(#{seq},#{id},#{title},#{content},#{seq},#{secret})
+		insert into qaboard(seq, id, title, content, root, secret)
+		values(#{seq}, #{id}, #{title}, #{content}, #{seq}, #{secret})
 	</insert>
 
 	<update id="modifyPost">
@@ -57,10 +57,10 @@
 	<!-- Reply Insert -->
 	<insert id="writeReply">
 		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
-			select IFNULL(max(seq),0)+1 from qaboard
+			select IFNULL(max(seq), 0) + 1 from qaboard
 		</selectKey>
-		insert into qaboard(seq,id,title,content,root,step,indent,secret)
-		values(#{seq},#{id},#{title},#{content},#{root},#{step},#{indent},#{secret})
+		insert into qaboard(seq, id, title, content, root, step, indent, secret)
+		values(#{seq}, #{id}, #{title}, #{content}, #{root}, #{step}, #{indent}, #{secret})
 	</insert>
 
 	<update id="updateStep">
