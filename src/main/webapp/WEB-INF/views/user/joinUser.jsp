@@ -155,8 +155,8 @@
 
 //--------------------------------------------------------------
 
-			$("#emailCheck").click(function() {            
-           	
+			$("#emailCheck").click(function() {
+				
    				var email = $('#email').val();
    				var dw = $('#dw').val();
    				var domain = $('#domain').val();
@@ -166,18 +166,30 @@
    	        		alert("이메일을 입력해주세요.");
    	           		return false;
    	        	}
+   				
+   				if (emCheck == false) {
+   					alert('이메일을 확인해주세요.');
+   					return false;
+   				}
    	        	
    	        	if (domain == '1' && dw.length < 1) {
    	        		alert("도메인을 입력해주세요.");
    	           		return false;
    	        	}
    	        	
+   	        	if (dwCheck == false) {
+   	        		alert('이메일 형식을 맞춰 입력해주세요.');
+   					return false;
+   				}
+   	        	
    	        	if (domain != '1' && dw.length < 1) {
    	        		alert("도메인을 선택해주세요.");
    	           		return false;
-   	        	}
-   	        	
+   	        	} 
    	       //----------------------------------------------------------------------
+   	        	if (emCheck && dwCheck && dCheck) {
+   	        		return true;
+   	        	}
    	        	
 				if ($('#enter_auth_number').css('display') == 'none') {
          			
@@ -206,7 +218,7 @@
        	      		}); // ajax
        	      		
 				} // enter_auth_number
-         		
+   	        	
 			}); // emailCheck
       
       		$("#email_auth_key").click(function() {
@@ -237,43 +249,43 @@
 		function inCheck() {
 
 			if (iCheck == false) {
-				$('#iMessage').html('id를 확인하세요 !!');
+				$('#iMessage').html('ID를 확인해주세요.');
 			}
 
 			if (pCheck == false) {
-				$('#pMessage').html('Password를 확인하세요 !!');
+				$('#pMessage').html('비밀번호를 확인해주세요.');
 			}
 
 			if (ppCheck == false) {
-				$('#ppMessage').html('Password가 일치하지 않습니다 !!');
+				$('#ppMessage').html('비밀번호가 일치하지 않습니다.');
 			}
 
 			if (nCheck == false) {
-				$('#nMessage').html('Name을 확인하세요 !!');
+				$('#nMessage').html('이름을 확인해주세요.');
 			}
 
 			if (bCheck == false) {
-				$('#bMessage').html('생년월일을 확인하세요 !!');
+				$('#bMessage').html('생년월일을 확인해주세요.');
 			}
                
 			if (phCheck == false) {
-				$('#phMessage').html('핸드폰 번호를 확인하세요 !!');
+				$('#phMessage').html('핸드폰 번호를 확인해주세요.');
 			}
 
 			if (emCheck == false) {
-				$('#emMessage').html('이메일을 확인하세요 !!');
+				$('#emMessage').html('이메일을 확인해주세요.');
 			}
 
 			if (dwCheck == false) {
-				$('#dwMessage').html('이메일 형식을 맞춰 입력하세요');
+				$('#dwMessage').html('이메일 형식을 맞춰 입력해주세요.');
 			}
 
 			if (dCheck == false) {
-				$('#dMessage').html('도메인을 선택해주세요');
+				$('#dMessage').html('도메인을 선택해주세요.');
 			}
                	
 			if (mail_auth_check == false) {
-				$('#emMessage').html('이메일인증하세요!');
+				$('#emMessage').html('이메일 인증이 필요합니다.');
 			}
 
 			if ($('#domain').val() == 1) {
@@ -289,13 +301,12 @@
 					return false;
 
 				} else {
-					//alert('가입해주셔서 감사합니다 :)');
 					return true; // submit 진행
 				}
 
 			} else {
 				//alert('오류가 있습니다.' + iCheck + pCheck + ppCheck + nCheck + bCheck + phCheck + emCheck + dwCheck + dCheck + mail_auth_check);
-				alert('오류가 있습니다. 다시 시도해주세요.');
+				alert('오류가 있습니다. 메시지 확인 후 다시 시도해주세요.');
 				return false;
 			}
 		} //inCheck

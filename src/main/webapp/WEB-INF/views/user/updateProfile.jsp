@@ -86,19 +86,31 @@
    	        		alert("이메일을 입력해주세요.");
    	           		return false;
    	        	}
+   				
+   				if (emCheck == false) {
+   					alert('이메일을 확인해주세요.');
+   					return false;
+   				}
    	        	
    	        	if (domain == '1' && dw.length < 1) {
    	        		alert("도메인을 입력해주세요.");
    	           		return false;
    	        	}
    	        	
+   	        	if (dwCheck == false) {
+   	        		alert('이메일 형식을 맞춰 입력해주세요.');
+   					return false;
+   				}
+   	        	
    	        	if (domain != '1' && dw.length < 1) {
    	        		alert("도메인을 선택해주세요.");
    	           		return false;
    	        	}
-   	        	
 		//---------------------------------------------------------------------------
-   	        	
+				if (emCheck && dwCheck && dCheck) {
+   	        		return true;
+   	        	}
+		
 				if ($('#enter_auth_number').css('display') == 'none') {
          			
 					// 나타나도록
@@ -160,7 +172,7 @@
             }
 
             if (nCheck == false) {
-           		 $('#nMessage').html('Name을 확인하세요 !!');
+           		 $('#nMessage').html('이름을 확인해주세요.');
             }
             
             if ($('#phone').val() == '${one.phone}') {
@@ -168,7 +180,7 @@
             }
             
             if (phCheck == false) {
-            	$('#phMessage').html('핸드폰 번호를 확인하세요 !!');
+            	$('#phMessage').html('핸드폰 번호를 확인해주세요.');
             }
             
             if (email1 == $('#email').val() && domain1 == $('#dw').val()) {
@@ -180,7 +192,7 @@
             }
 
             if (emCheck == false) {
-            	$('#emMessage').html('이메일을 확인하세요 !!');
+            	$('#emMessage').html('이메일을 확인해주세요.');
             }
 
             if ($('#dw').val() == '${one.domain}') {
@@ -188,11 +200,11 @@
             }
 
             if (dwCheck == false) {
-            	$('#dwMessage').html('이메일 형식을 맞춰 입력하세요');
+            	$('#dwMessage').html('이메일 형식을 맞춰 입력해주세요.');
             }
 
             if (dCheck == false) {
-           		$('#dMessage').html('도메인을 선택해주세요');
+           		$('#dMessage').html('도메인을 선택해주세요.');
             }
 
             if ($('#domain').val() == 1) {
@@ -211,7 +223,8 @@
                 	return true;
 
 			} else {
-            	alert('오류가 있습니다.' + nCheck + phCheck + emCheck + dwCheck + dCheck + mail_auth_check);
+            	//alert('오류가 있습니다.' + nCheck + phCheck + emCheck + dwCheck + dCheck + mail_auth_check);
+            	alert('오류가 있습니다. 메시지 확인 후 다시 시도해주세요.');
                 return false;
             }
 

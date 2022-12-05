@@ -224,7 +224,7 @@ function emaCheck() {
 		return false;
 
 	} else if (email.replace(/[a-z.0-9._\-]/gi, '').length > 0) {
-		$('#emMessage').html('이메일은 알파벳, 숫자, 특수기호 : 언더바[ _ ], 하이픈[ - ])으로만 입력해주세요.');
+		$('#emMessage').html('알파벳, 숫자, 특수기호(언더바[ _ ], 하이픈[ - ])으로만 입력해주세요.');
 		return false;
 
 	} else {

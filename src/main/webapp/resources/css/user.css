@@ -2592,6 +2592,7 @@ button.bg-dark:hover {
 
 .email-check {
     display: flex;
+	margin-top: 20px;
 }
 
 #enter_auth_number {
