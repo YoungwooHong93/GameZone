@@ -69,7 +69,7 @@
 			<div id="searchBar">
 				<c:if test="${not empty loginID}">
 					&nbsp;&nbsp;&nbsp;
-					<a href="qnaWritePostForm" class="writePostbtn">[QnA 등록하기]</a>
+					<a href="qnaWritePostForm" class="writePostbtn">QnA 등록하기</a>
 					<br>
 				</c:if>
 			</div>

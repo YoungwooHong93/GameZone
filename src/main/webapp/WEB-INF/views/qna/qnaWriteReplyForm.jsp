@@ -5,7 +5,6 @@
 <head>
 	<meta charset="UTF-8">
 	<title>GameZone | Q&amp;A 답글 작성</title>
-	<link rel="stylesheet" type="text/css" href="/resources/css/myStyle.css">
 	<link rel="stylesheet" href="resources/css/owl.carousel.css" />
 	<link rel="stylesheet" href="resources/css/style.css" />
 	<link rel="stylesheet" href="resources/css/animate.css" />
@@ -79,44 +78,44 @@
 			alert(`${message}`);
 		</script>		
 	</c:if>
-   	<main>
+	<main>
 		<form action="qnaWriteReply" method="post">
-			<table>
-				<tr height="40">
-					<td bgcolor="violet">아이디</td>
-					<td><input type="text" name="id" value="${loginID}" size="20" readonly></td>
-				</tr>
-				
-				<tr height="40">
-					<td bgcolor="violet">제목</td>
-					<td><input type="text" name="title" id="title" placeholder="제목을 반드시 입력하세요."></td>
-				</tr>
-				
-				<tr height="40">
-					<td bgcolor="violet">내용</td>
-					<td><textarea rows="5" cols="50" name="content" id="content"></textarea></td>
-				</tr>
-				
-				<tr height="40">
-					<td></td>
-					<td><input type="text" name="root" value="${qnAVO.root}" hidden>
-						<input type="text" name="step" value="${qnAVO.step}" hidden>
-						<input type="text" name="indent" value="${param.indent}" hidden>
-						<input type="text" name="secret" value="${param.secret}" hidden>
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<input type="submit" value="등록" onclick="return writeReply()">&nbsp;&nbsp;
-						<a href="javascript:history.go(-1)"><input type="button" value="취소"></a>
-					</td>
-				</tr>
-			</table>
+			<div class="readPost_outer">
+				<div class="readPost_container">
+					<div class="qna_titleBox">
+						<span class="qna_title">제목</span>
+						<span>
+							<input type="text" name="title" id="title" class="qnaTitle_input"
+								placeholder="제목을 반드시 입력하세요.">
+						</span>
+					</div>
+
+					<div class="readPost_info">
+						<input class="color-choi qna_id" type="text" name="id" value="${loginID}" readonly>
+					</div>
+
+					<div class="qna_contentBox">
+						<span>내용</span>
+						<textarea name="content" id="content"></textarea>
+					</div>
+
+					<div hidden>
+						<input type="text" name="root" value="${qnAVO.root}">
+						<input type="text" name="step" value="${qnAVO.step}">
+						<input type="text" name="indent" value="${param.indent}">
+						<input type="text" name="secret" value="${param.secret}">
+					</div>
+				</div>
+				<div class="readPost_btnBox">
+					<input class="readPost_btn" type="submit" value="등록" onclick="return writeReply()">
+					&nbsp;&nbsp;<a href="javascript:history.go(-1)">
+						<input type="button" class="readPost_btn" value="취소"></a>
+					&nbsp;&nbsp;<a href="qnaBoardList" class="readPost_btn" style="margin-left: 100px;">목록으로</a>
+					&nbsp;&nbsp;<a href="javascript:history.go(-1)" class="readPost_btn">이전으로</a>
+				</div>
+
+			</div>
 		</form>
-		&nbsp;&nbsp;
-		<a href="qnaBoardList">목록으로</a> &nbsp;&nbsp;
-		<a href="javascript:history.go(-1)">이전으로</a>
 	</main>
     <!-- Footer section -->
     <footer class="footer-section">

@@ -1222,9 +1222,11 @@ Small Mobile :320px.
 	width: 50%;
 	text-align: initial;
 	display: inline-block;
+	margin-bottom: 40px;
 }
 
-.board_titleBox {
+.board_titleBox,
+.qna_titleBox {
 	text-align: initial;
 	width: 100%;
 	margin-bottom: 10px;
@@ -1242,18 +1244,14 @@ Small Mobile :320px.
 
 .board_contentBox {
 	display: block;
-	width: 1000px;
+	width: 100%;
+	margin-bottom: 30px;
 }
 
 .board_contentBox span {
 	display: block;
 	margin: 10px;
 	font-size: 1.5em;
-}
-
-.board_contentBox {
-	width: 100%;
-	margin-bottom: 30px;
 }
 
 .board_contentBox textarea {
@@ -1290,6 +1288,7 @@ Small Mobile :320px.
 	font-size: 1rem;
 	line-height: 1.5;
 	border-radius: .25rem;
+	margin-right: 20px;
 }
 
 .readPost_btn:hover {
@@ -1401,4 +1400,75 @@ Small Mobile :320px.
 .replyContentLi {
 	padding-left: 10px;
 	word-break: break-all;
+}
+
+/*------------------
+qna
+---------------------*/
+
+.qna_titleBox {
+	display: flex;
+	align-items: center;
+}
+
+.qna_titleBox span:not(.qna_title) {
+	width: 88%;
+}
+
+.qna_title {
+	color: #fff;
+	font-size: 40px;
+	margin-right: 40px;
+}
+
+.qna_contentBox {
+	display: block;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.qna_contentBox span {
+	display: block;
+	margin: 10px;
+	font-size: 1.5em;
+}
+
+.qna_contentBox textarea {
+	color: #fff;
+	background-color: #222222;
+	height: 350px;
+	width: 100%;
+	padding: 10px;
+	font-size: 1.1em;
+}
+
+.qnaTitle_input {
+	height: calc(1.5em + .75rem + 2px);
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	font-weight: bold;
+	line-height: 1.5;
+	color: #fff;
+	background-color: #222222;
+	background-clip: padding-box;
+	border: 1px solid rgb(118, 118, 118);
+	border-radius: .25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	width: 100%;
+}
+
+.secretBox {
+	display: flex;
+	font-size: 20px;
+	align-items: center;
+}
+
+#secret {
+	zoom: 1.5;
+}
+
+.qna_id {
+	border: none;
+	background: transparent;
+    font-size: 25px;
 }
