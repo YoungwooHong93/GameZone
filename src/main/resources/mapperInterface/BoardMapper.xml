@@ -58,7 +58,8 @@
 	</select>
 
 	<select id="readPost" resultType="vo.BoardVO">
-		select * from board 
+		select seq, id, title, content, DATE_FORMAT(regdate, '%Y-%m-%d \| %H:%i') regdate, cnt 
+		from board 
 		where seq = #{seq}
 	</select>
 

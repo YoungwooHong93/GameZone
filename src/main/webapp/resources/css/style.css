@@ -760,6 +760,7 @@ ul, ol {
 /*------------------
   Responsive
 ---------------------*/
+
 /* @media ( min-width : 1200px) {
    .container {
       max-width: 1176px;
@@ -1036,9 +1037,9 @@ Small Mobile :320px.
 #board_img_left,
 #board_img_right {
 	position: fixed;
-	top: 11%;
-	max-height: 75%;
-	width: 13%;
+	top: 13.5%;
+	max-height: 78%;
+	width: 12%;
 	margin: 0 1%;
 }
 
@@ -1047,10 +1048,16 @@ Small Mobile :320px.
 }
 
 #searchBar {
-   text-align: right;
-   width: 84.9%;
-   margin: 5px;
-   
+	text-align: right;
+	width: 84.6%;
+	margin: 5px;
+}
+
+#qnasearchBar {
+	width: 87.6%;
+	margin: 0 16%;
+	display: flex;
+	justify-content: space-between;
 }
 
 #searchBtn:hover {
@@ -1146,7 +1153,7 @@ Small Mobile :320px.
 	width: 50%;
 	text-align: initial;
 	display: inline-block;
-	margin-bottom: 40px;
+	margin-bottom: 5px;
 }
 
 .board_titleBox,
@@ -1162,8 +1169,15 @@ Small Mobile :320px.
 }
 
 .readPost_info {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	font-size: 25px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.font-17 {
+	font-size: 17px;
 }
 
 .board_contentBox {
@@ -1326,6 +1340,16 @@ Small Mobile :320px.
 	word-break: break-all;
 }
 
+.main_title {
+	text-align: center;
+    margin-bottom: 5px;
+}
+
+.main_title h2 {
+	padding-top: 40px;
+    font-size: 36px;
+    color: #fff;
+}
 /*------------------
 qna
 ---------------------*/
@@ -1333,6 +1357,7 @@ qna
 .qna_titleBox {
 	display: flex;
 	align-items: center;
+	margin-bottom: 20px;
 }
 
 .qna_titleBox span:not(.qna_title) {
@@ -1341,8 +1366,8 @@ qna
 
 .qna_title {
 	color: #fff;
-	font-size: 40px;
-	margin-right: 40px;
+	font-size: 32px;
+	margin-right: 31px;
 }
 
 .qna_contentBox {
@@ -1360,7 +1385,7 @@ qna
 .qna_contentBox textarea {
 	color: #fff;
 	background-color: #222222;
-	height: 350px;
+	height: 300px;
 	width: 100%;
 	padding: 10px;
 	font-size: 1.1em;

@@ -105,9 +105,7 @@
 							</c:if>
 						</td>
 						<td id="board_title_center">
-							<c:if test="${loginID == 'admin'}">
-								<a href="detailUser?name=${user.user_name}">${user.user_name}</a>
-							</c:if>
+							${user.user_name}
 						</td>
 						<td>${user.birthday}</td>
 						<c:if test="${user.gender == 1}">

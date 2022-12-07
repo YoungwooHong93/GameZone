@@ -80,6 +80,9 @@
 	</c:if>
 	<main>
 		<form action="qnaWriteReply" method="post">
+			<div class="main_title">
+				<h2>Q&amp;A | 답글</h2>
+			</div>
 			<div class="readPost_outer">
 				<div class="readPost_container">
 					<div class="qna_titleBox">

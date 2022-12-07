@@ -27,7 +27,7 @@
 	       	}
 			
 			if (confirm("수정하시겠습니까? (Yes : 확인 / No : 취소)")) {
-				$('#modifyPostForm').submit();
+				//$('#modifyPostForm').submit();
 	           	return true;
 	           	
 			} else {
@@ -35,16 +35,6 @@
 				return false;
 			}
 		} // modifyPost(수정)
-		
-		function removePost() {
-			
-			if (confirm("삭제하시겠습니까? (Yes : 확인 / No : 취소)")) {
-	           	return true; // 삭제
-			} else {
-	           	alert('삭제가 취소되었습니다.');
-				return false;
-			}
-		} // removePost(삭제)
 	</script>
 </head>
 <body>
@@ -87,52 +77,45 @@
 			alert(`${message}`);
 		</script>		
 	</c:if>
-   	<main>
+	<main>
 		<form action="modifyPost" method="post" id="modifyPostForm">
-			<table>
-				<tr>
-					<td>Seq</td>
-					<td><input type="text" name="seq" value="${one.seq}" size="20" readonly></td>
-				</tr>
-				<tr>
-					<td>I D</td>
-					<td><input type="text" name="id" value="${one.id}"  size="20" readonly> </td>
-				</tr>
-				<tr>
-					<td>Title</td>
-					<td><input type="text" name="title" id="title" value="${one.title }"> </td>
-				</tr>
-				<tr>
-					<td>Content</td>
-					<td><textarea rows="5" cols="50" name="content" id="content">${one.content}</textarea></td>
-				</tr>
-				<tr>
-					<td>RegDate</td>
-					<td><input type="text" name="regdate" value="${one.regdate}"  readonly></td>
-				</tr>
-				<tr>
-					<td>조회수</td>
-					<td><input type="text" name="cnt" value="${one.cnt}"  size="20" readonly></td>
-				</tr>
-				
-				<tr>
-					<td></td>
-					<td>
-						<input type="submit" value="글 수정" onclick="return modifyPost()">&nbsp;&nbsp;
-						<a href="javascript:history.go(-1)"><input type="button" value="취소"></a>
-					</td>
-				</tr>
-			</table>
+			<div class="main_title">
+				<h2>자유 게시판 | 수정</h2>
+			</div>
+			<div class="readPost_outer">
+				<div class="readPost_container">
+					<div class="qna_titleBox">
+						<span class="qna_title">제목</span>
+						<span>
+							<input type="text" name="title" id="title" class="qnaTitle_input" value="${one.title}">
+						</span>
+					</div>
+					<div hidden>
+						<input type="text" name="seq" value="${one.seq}" size="20" readonly>
+					</div>
+					<div hidden>
+						<div><input type="text" name="id" value="${one.id}"  size="20" readonly> </div>
+					</div>
+					<div hidden>
+						<div><input type="text" name="regdate" value="${one.regdate}"  readonly></div>
+					</div>
+					<div hidden>
+						<div><input type="text" name="cnt" value="${one.cnt}"  size="20" readonly></div>
+					</div>
+					<div class="qna_contentBox">
+						<span>내용</span>
+						<textarea name="content" id="content">${one.content}</textarea>
+					</div>
+				</div>
+				<div class="readPost_btnBox">
+					<input class="readPost_btn" type="submit" value="완료" onclick="return modifyPost()">
+					&nbsp;&nbsp;<a href="javascript:history.go(-1)">
+						<input class="readPost_btn" type="button" value="취소"></a>
+					&nbsp;&nbsp;<a href="boardList" class="readPost_btn" style="margin-left: 100px;">목록으로</a>
+				</div>
+			</div>
 		</form>
-		<c:if test="${not empty message}">
-			<hr><${message}<br>
-		</c:if>
-		
-		<c:if test="${loginID == one.id || loginID == 'admin'}">&nbsp;&nbsp;
-	      <a href="removePost?seq=${one.seq}&root=${one.root}" onclick="return removePost()">[글 삭제]</a>
-		</c:if>
-		<br> 
-		&nbsp;&nbsp;<a href="boardList">목록으로</a>
+		<br>
 	</main>
     <!-- Footer section -->
     <footer class="footer-section">

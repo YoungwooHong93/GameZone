@@ -77,7 +77,8 @@
 						<input type="text" value="${one.seq}" id="seq">
 					</div>
 					<div class="readPost_info">
-						<div class="color-choi">${one.id} &nbsp;&nbsp; | &nbsp;&nbsp; ${one.regdate}</div>
+						<div class="color-choi">${one.id}</div>
+						<div class="color-choi font-17">${one.regdate}&nbsp;&nbsp;&nbsp;&nbsp;조회수 ${one.cnt}</div>
 					</div>
 
 					<div class="board_contentBox">

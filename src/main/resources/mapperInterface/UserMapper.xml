@@ -48,14 +48,14 @@
 	
 	<select id="userList" resultType="vo.UserVO">
 		select * from user 
-		where (id != "zzz" <include refid="search"></include>
+		where (id != "!!!" <include refid="search"></include>
 		order by id asc
 		limit #{sno}, #{rowsPerPage}
 	</select>
 	
 	<select id="viewCount" resultType="int">
 		select count(*) from user
-		where (id != "zzz" <include refid="search"></include>
+		where (id != "!!!" <include refid="search"></include>
 	</select>
 
 <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->

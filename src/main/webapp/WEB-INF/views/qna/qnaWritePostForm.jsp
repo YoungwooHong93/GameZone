@@ -86,9 +86,12 @@
 	</c:if>
 	<main>
 		<form action="qnaWritePost" method="post" id="qnaForm">
+			<div class="main_title">
+				<h2>Q&amp;A | 작성</h2>
+			</div>
 			<div class="readPost_outer">
 				<div class="readPost_container">
-					<div class="qna_titleBox" style="margin-bottom: 30px;">
+					<div class="qna_titleBox">
 						<span class="qna_title">제목</span>
 						<span>
 							<input type="text" name="title" id="title" class="qnaTitle_input"
@@ -96,7 +99,7 @@
 						</span>
 					</div>
 					<div class="readPost_info" hidden>
-						<input class="color-choi qna_id" type="text" name="id" value="${loginID}" readonly>
+						<input class="color-choi qna_id" type="text" name="id" value="${loginID}" hidden>
 					</div>
 					<div class="qna_contentBox">
 						<span>내용</span>

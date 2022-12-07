@@ -78,31 +78,35 @@
 			alert(`${message}`);
 		</script>
 	</c:if>
-   	<main>
+	<main>
 		<form action="writePost" method="post" id="writePostForm">
-			<table>
-				<tr height="40">
-					<td bgcolor="lemonchiffon">I  D</td>
-					<td><input type="text" name="id" value="${loginID}" size="20" readonly></td>
-				</tr>
-				<tr height="40">
-					<td bgcolor="lemonchiffon">Title</td>
-					<td><input type="text" name="title" id="title" placeholder="제목을 반드시 입력하세요."></td>
-				</tr>
-				<tr height="40">
-					<td bgcolor="lemonchiffon">Content</td>
-					<td><textarea rows="5" cols="50" name="content" id="content"></textarea></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<input type="submit" value="등록" onclick="return writePost()">&nbsp;&nbsp;
-						<a href="javascript:history.go(-1)"><input type="button" value="취소"></a>
-					</td>
-				</tr>
-			</table>
+			<div class="main_title">
+				<h2>자유 게시판 | 작성</h2>
+			</div>
+			<div class="readPost_outer">
+				<div class="readPost_container">
+					<div class="qna_titleBox">
+						<span class="qna_title">제목</span>
+						<span>
+							<input type="text" name="title" id="title" class="qnaTitle_input"
+								placeholder="제목을 반드시 입력하세요.">
+						</span>
+					</div>
+					<div class="readPost_info" hidden>
+						<input class="color-choi qna_id" type="text" name="id" value="${loginID}" hidden>
+					</div>
+					<div class="qna_contentBox">
+						<span>내용</span>
+						<textarea name="content" id="content"></textarea>
+					</div>
+				</div>
+				<div class="readPost_btnBox">
+					<input class="readPost_btn" type="submit" value="등록" onclick="return writePost()">
+					&nbsp;&nbsp;<a href="javascript:history.go(-1)">
+						<input class="readPost_btn" type="button" value="취소"></a>
+				</div>
+			</div>
 		</form>
-		&nbsp;&nbsp;<a href="boardList">목록으로</a>
 	</main>
     <!-- Footer section -->
     <footer class="footer-section">

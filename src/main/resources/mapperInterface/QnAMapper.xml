@@ -22,7 +22,9 @@
 	</select>
 
 	<select id="readPost" resultType="vo.QnAVO">
-		select * from qaboard where seq = #{seq}
+		select seq, id, title, content, DATE_FORMAT(regdate, '%Y-%m-%d \| %H:%i') regdate, secret 
+		from qaboard 
+		where seq = #{seq}
 	</select>
 
 	<insert id="writePost">
