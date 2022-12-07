@@ -58,11 +58,11 @@ public class HomeController {
         String toMail = email;
         String title = "GameZone 회원가입 인증 이메일 입니다.";
         String content = 
-                "홈페이지를 방문해주셔서 감사합니다." +
+                "홈페이지를 방문해주셔서 감사합니다 *^_^*" +
                 "<br><br>" + 
                 "인증 번호는 " + checkNum + " 입니다." + 
                 "<br>" + 
-                "해당 인증번호를 인증번호 확인란에 기입해주세요.";
+                "해당 인증번호를 인증번호 확인란에 정확하게 입력해주세요.";
         
         try {
             

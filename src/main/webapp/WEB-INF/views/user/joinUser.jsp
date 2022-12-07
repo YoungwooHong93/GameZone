@@ -177,15 +177,11 @@
    	           		return false;
    	        	}
    	        	
-   	        	if (dwCheck == false) {
-   	        		alert('이메일 형식을 맞춰 입력해주세요.');
-   					return false;
-   				}
-   	        	
    	        	if (domain != '1' && dw.length < 1) {
    	        		alert("도메인을 선택해주세요.");
    	           		return false;
-   	        	} 
+   	        	}
+   	        	
    	       //----------------------------------------------------------------------
    	        	if (emCheck && dwCheck && dCheck) {
    	        		return true;

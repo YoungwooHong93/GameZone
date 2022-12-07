@@ -28,7 +28,7 @@
         	console.log($('.btmSocial').val());
            
 	       	if ($('.btmSocial').val() == '' || $('.btmSocial').val() == null) {
-	        	location.href="errorPage/exception_404.jsp";
+	        	location.href="exception_404.jsp";
 	          
 	       	} else {
 	        	location.href=site;

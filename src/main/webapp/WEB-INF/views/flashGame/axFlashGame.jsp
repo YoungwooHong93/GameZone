@@ -14,7 +14,7 @@
 	<script src="resources/js/axFlashGame.js"></script>
 	<script>
         function detailContent() {
-        	alert('로그인 후 상세보기가 가능합니다 :-)')
+        	alert('로그인 후 해당 사이트로 이동 가능합니다 :-)')
         } // detailContent
 	</script>
 </head>
@@ -112,9 +112,9 @@
              	</c:if>
              	
              	<c:if test="${empty list}">
-                	<tr height="50">
-                   		<td colspan="2">해당하는 게임이 존재하지 않습니다.</td>
-                	</tr>
+					<div>
+						<span style="font-size: 2em;">해당하는 게임이 존재하지 않습니다.</span>
+					</div>
              	</c:if>
 			</table>
 

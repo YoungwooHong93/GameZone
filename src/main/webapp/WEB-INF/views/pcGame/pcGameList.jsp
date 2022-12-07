@@ -45,9 +45,9 @@
 			</c:forEach>
 		</c:if>
 		<c:if test="${empty list}">
-			<tr height="50">
-				<td colspan="2">해당하는 게임이 존재하지 않습니다.</td>
-			</tr>
+			<div>
+				<span style="font-size: 2em;">해당하는 게임이 존재하지 않습니다.</span>
+			</div>
 		</c:if>
 	</table>
 
