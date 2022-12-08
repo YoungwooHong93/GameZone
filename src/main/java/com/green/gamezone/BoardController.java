@@ -172,14 +172,13 @@ public class BoardController {
 		
 		String callback = request.getParameter("CKEditorFuncNum");
 		printWrite = response.getWriter();
-		String fileUrl = "";
+		String fileUrl = "/ckUpload/" + uid + "_" + fileName;
 		
 		// 업로드시 메세지 출력
 		printWrite.println("<script type='text/javascript'>"
 			     + "window.parent.CKEDITOR.tools.callFunction("
 			     + callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
 			     +"</script>");
-		
 		printWrite.flush();
 		
 		} catch(IOException e) {
