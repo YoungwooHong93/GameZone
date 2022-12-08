@@ -29,6 +29,11 @@
    
    	<!-- <beans:bean id="downloadView" class="downTest.DownloadView" /> -->
    	
+   	<!-- 업로드 패스 설정 -->
+   	<beans:bean class="java.lang.String" id="uploadPath">
+   		<beans:constructor-arg value="C:\Users\Administrator.User -2022YUZBW\git\GameZone\src\main\webapp\resources"/>
+   	</beans:bean>
+   	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="-1" />
 	</beans:bean>

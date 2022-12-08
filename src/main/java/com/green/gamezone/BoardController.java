@@ -2,6 +2,7 @@ package com.green.gamezone;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.UUID;
@@ -134,8 +135,8 @@ public class BoardController {
 	} // writePost
 
 // ----------------------------------------------------------------------------------------------------------------------
-	@RequestMapping(value = "writePost", method = RequestMethod.POST)
-		public void imageUpload(HttpServletRequest request, HttpServletResponse response, 
+	@RequestMapping(value = "ckUpload", method = RequestMethod.POST)
+	public void imageUpload(HttpServletRequest request, HttpServletResponse response, 
 				MultipartHttpServletRequest multifile, @RequestParam MultipartFile upload) throws Exception {
 		UUID uid = UUID.randomUUID();
 		
@@ -174,15 +175,30 @@ public class BoardController {
 		String fileUrl = "";
 		
 		// 업로드시 메세지 출력
-		printWrite.println("{\"filename\" : \"" + fileName+"\", \"uploaded\"");
+		printWrite.println("<script type='text/javascript'>"
+			     + "window.parent.CKEDITOR.tools.callFunction("
+			     + callback+",'"+ fileUrl+"','이미지를 업로드하였습니다.')"
+			     +"</script>");
 		
+		printWrite.flush();
 		
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+			if(out != null) {
+				out.close();
+			}
+			if(printWrite != null) {
+				printWrite.close();
+			}
+			
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
-		
-		
-		
+		return;
 	}
-	
 	
 // ----------------------------------------------------------------------------------------------------------------------
 

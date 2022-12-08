@@ -13,6 +13,19 @@
 	<link rel="shortcut icon" href="resources/img/icon2.ico">
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
 	<script src="resources/ckeditor/ckeditor.js"></script>
+	<script> 
+	    var ckeditor_config = {
+	
+	    resize_enaleb : false,
+	
+	    enterMode : CKEDITOR.ENTER_BR,
+	
+	    shiftEnterMode : CKEDITOR.ENTER_P,
+	
+	    filebrowserUploadUrl : "/resources/ckUpload"
+	
+	    };
+    </script>
 	<script>
 		function writePost() {
 			// title 값이 null이거나 '' 일때 jqurey
@@ -100,9 +113,7 @@
 						<span>내용</span>
 						<textarea name="content" id="content"></textarea>
 						<script>
-							CKEDITOR.replace('content' , {
-								filebrowserUploadUrl: 
-							});
+							CKEDITOR.replace('content' , ckeditor_config );
 						</script>
 					</div>
 				</div>
