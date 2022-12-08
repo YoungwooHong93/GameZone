@@ -1,5 +1,11 @@
 package com.green.gamezone;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,6 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -124,6 +133,57 @@ public class BoardController {
 		
 	} // writePost
 
+// ----------------------------------------------------------------------------------------------------------------------
+	@RequestMapping(value = "writePost", method = RequestMethod.POST)
+		public void imageUpload(HttpServletRequest request, HttpServletResponse response, 
+				MultipartHttpServletRequest multifile, @RequestParam MultipartFile upload) throws Exception {
+		UUID uid = UUID.randomUUID();
+		
+		OutputStream out = null;
+		PrintWriter printWrite = null;
+		
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		try {
+			// 파일 이름 가져오기
+			String fileName = upload.getOriginalFilename();
+			byte[] bytes = upload.getBytes();
+			
+			// 이미지 경로 생성
+			String path = "";
+			String ckUploadPath = path + uid + "_" + fileName;
+			File folder = new File(path);
+			System.out.println("path:"+path); // 이미지 저장경로 console에 확인
+			
+			// 해당 디렉토리 확인
+			if(!folder.exists()) {
+				try {
+					folder.mkdirs(); // 폴더 생성
+			} catch (Exception e) {
+				e.getStackTrace();
+			}
+		}
+		
+		out = new FileOutputStream(new File(ckUploadPath));
+		out.write(bytes);
+		out.flush(); // outputStream에 저장된 데이터를 전송하고 초기화
+		
+		String callback = request.getParameter("CKEditorFuncNum");
+		printWrite = response.getWriter();
+		String fileUrl = "";
+		
+		// 업로드시 메세지 출력
+		printWrite.println("{\"filename\" : \"" + fileName+"\", \"uploaded\"");
+		
+		
+		}
+		
+		
+		
+	}
+	
+	
 // ----------------------------------------------------------------------------------------------------------------------
 
 	// ** modifyPost : 게시물 수정

@@ -100,7 +100,9 @@
 						<span>내용</span>
 						<textarea name="content" id="content"></textarea>
 						<script>
-							CKEDITOR.replace('content');
+							CKEDITOR.replace('content' , {
+								filebrowserUploadUrl: 
+							});
 						</script>
 					</div>
 				</div>
