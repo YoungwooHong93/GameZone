@@ -104,6 +104,9 @@
 					<div class="qna_contentBox">
 						<span>내용</span>
 						<textarea name="content" id="content"></textarea>
+						<script>
+							CKEDITOR.replace('content');
+						</script>
 					</div>
 					<div class="secretBox">
 						<input type="checkbox" name="secret" id="secret" value="true">&nbsp;&nbsp;비밀글 설정
@@ -142,6 +145,7 @@
     </footer>
     <!-- Footer section end -->
    <!-- ====== Javascripts & Jquery ====== -->
+   <script src="resources/ckeditor/ckeditor.js"></script>
    <script src="resources/js/jquery-3.2.1.min.js"></script>
    <script src="resources/js/bootstrap.min.js"></script>
    <script src="resources/js/owl.carousel.min.js"></script>

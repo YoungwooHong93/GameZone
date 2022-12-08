@@ -1376,20 +1376,20 @@ qna
 	margin-bottom: 15px;
 }
 
-.qna_contentBox span {
+/* .qna_contentBox span {
 	display: block;
 	margin: 10px;
 	font-size: 1.5em;
-}
+} */
 
-.qna_contentBox textarea {
+/* .qna_contentBox textarea {
 	color: #fff;
 	background-color: #222222;
 	height: 300px;
 	width: 100%;
 	padding: 10px;
 	font-size: 1.1em;
-}
+} */
 
 .qnaTitle_input {
 	height: calc(1.5em + .75rem + 2px);

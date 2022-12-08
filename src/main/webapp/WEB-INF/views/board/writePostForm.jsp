@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="resources/css/animate.css" />
 	<link rel="shortcut icon" href="resources/img/icon2.ico">
 	<script src="resources/js/jquery-3.2.1.min.js"></script>
+	<script src="resources/ckeditor/ckeditor.js"></script>
 	<script>
 		function writePost() {
 			// title 값이 null이거나 '' 일때 jqurey
@@ -98,6 +99,9 @@
 					<div class="qna_contentBox">
 						<span>내용</span>
 						<textarea name="content" id="content"></textarea>
+						<script>
+							CKEDITOR.replace('content');
+						</script>
 					</div>
 				</div>
 				<div class="readPost_btnBox">
